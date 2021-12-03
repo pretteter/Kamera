@@ -18,6 +18,6 @@ socket.on("toClient", (data) => {
 })
 
 function sendData(data) {
-  // console.table(socket);
+  // console.table(data);
   socket.emit('chat message', data);
 }
