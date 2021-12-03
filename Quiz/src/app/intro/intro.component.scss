@@ -1,0 +1,21 @@
+#greetings {
+  margin: auto;
+  margin-top: auto;
+  text-align: center;
+  max-height: 20%;
+  max-width: 20%;
+padding-top: 9%;
+  transform: scale(2.5);
+  // border: 3px solid black;
+  div {
+    padding: 8px;
+    color: gray;
+    font-size: large;
+    border: 1px solid black;
+    border-radius: 60px;
+  }
+
+  button {
+    background-color: white;
+  }
+}

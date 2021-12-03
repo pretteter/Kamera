@@ -1,0 +1,17 @@
+<div id="greetings" *ngIf="status===1">
+  <div>
+    {{loadGreeting()}}
+  </div>
+  <br>
+  <br>
+  <button mat-stroked-button (click)='changeStep(2)'>Zur Einführung</button>
+</div>
+
+<div id="2step" *ngIf="status===2">
+  <div>
+    {{loadGreeting()}}
+  </div>
+  <br>
+  <br>
+  <button mat-stroked-button (click)='changeStep(1)'>2ter Schritt</button>
+</div>
