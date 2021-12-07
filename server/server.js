@@ -5,27 +5,40 @@ const httpServer = http.createServer(app);
 const {
     Server
 } = require("socket.io");
-const io = new Server(httpServer);
+const ioCam = new Server(httpServer, {
+    path: "/camData/"
+});
+const ioQuiz = new Server(httpServer, {
+    path: "/quizData/"
+});
+
+
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello world</h1>');
 });
 
-app.get('/cam', (req, res) => {
-    res.send('<h1>Hello Cam</h1>');
-});
-
-io.on('connection', (socket) => {
-    console.log('a user connected');
-    // console.log(socket)
-    console.log(socket.handshake.headers.origin)
-
-    socket.on("chat message", (data) => {
-        // console.log("message: ")
+ioQuiz.on('connection', (socket) => {
+    console.log('Quiz connected');
+    ioQuiz.quizSocket=socket;
+    console.log(ioQuiz.quizSocket);
+    socket.on("quizData", (data) => {
+        console.log("quizData " + data)
         // console.table(data)
     })
 
-    socket.emit("toClient","testClient")
+    // socket.emit("toClient", "testClient")
+});
+
+ioCam.on('connection', (socket) => {
+    console.log('Cam connected');
+    ioCam.camSocket=socket;
+    socket.on("camData", (data) => {
+        console.log("camData ")
+        // console.table(data)
+    })
+
+    // socket.emit("toClient", "testClient")
 });
 
 httpServer.listen(3000, () => {

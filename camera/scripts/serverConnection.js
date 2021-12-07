@@ -1,8 +1,6 @@
-var socket = io.connect("http://localhost:3000/", {
+var socket = io("http://localhost:3000/", {
   transports: ["websocket"],
-  extraHeaders: {
-    "my-custom-header": "1234" // WARN: this will be ignored in a browser
-  }
+  path: "/camData/"
 });
 console.log(socket);
 socket.on("connect_error", (data) => {
@@ -19,5 +17,5 @@ socket.on("toClient", (data) => {
 
 function sendData(data) {
   // console.table(data);
-  socket.emit('chat message', data);
+  socket.emit('camData', data);
 }

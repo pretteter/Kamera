@@ -1,8 +1,6 @@
-var socket = io.connect("http://localhost:3000/", {
+var socket = io("http://localhost:3000/", {
   transports: ["websocket"],
-  extraHeaders: {
-    "my-custom-header": "1234" // WARN: this will be ignored in a browser
-  }
+  path: "/quizData/"
 });
 console.log(socket);
 socket.on("connect_error", (data) => {
@@ -17,7 +15,12 @@ socket.on("toClient", (data) => {
   console.log(data)
 })
 
-function sendData(data) {
-  // console.table(data);
-  socket.emit('chat message', data);
-}
+
+var serverData = (function () {
+  return {
+    sendData: function sendData(data) {
+      // console.table(data);
+      socket.emit('quizData', data);
+    }
+  }
+})(serverData || {})
