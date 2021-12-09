@@ -4,7 +4,12 @@ import {
 } from '@angular/common/http';
 // import { Socket } from 'src/app/service/serverConnection.js'
 
-declare var serverData: any;
+//declare var serverData: any;
+
+export interface Question {
+  question: string;
+  answers: string[];
+}
 
 @Component({
   selector: 'app-intro',
@@ -13,31 +18,32 @@ declare var serverData: any;
 })
 export class IntroComponent implements OnInit {
   private httpClient: HttpClient;
-  public status: number;
-  public greetings: string;
+  public step: number;
 
+  public completeText: any = {};
 
   constructor(http: HttpClient) {
     this.httpClient = http;
-    this.status = 1;
-    this.greetings=this.loadGreeting();
+    this.step = 0;
   }
 
   ngOnInit(): void {
     console.log("start")
-    const pathToFile: string = '/assets/textfiles/begruesungstext.html'
-    console.table(this.getFile(pathToFile));
-
+    // const pathToFile: string = '/assets/textfiles/begruesungstext.html'
+    // console.table(this.getFile(pathToFile));
+    this.loadGreeting();
   }
-  loadGreeting(): string {
-    // this.getFile(pathToFile);
-    return this.getFile('/assets/textfiles/begruesungstext.html');
+  loadGreeting() {
+    this.getFile('/assets/textfiles/intro.json');
   }
 
-  getFile(pathToFile: string):any {
-    this.httpClient.get(pathToFile, { responseType: 'text' }).subscribe(data => {
-      console.table(data.toString());
-      this.greetings = data.toString();
+  getFile(pathToFile: string) {
+    this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
+
+      this.completeText = JSON.parse(JSON.stringify(data));
+      console.log(this.completeText);
+      // this.showText.text = data.toString();
+      // this.showText.step = this.step;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -53,7 +59,21 @@ export class IntroComponent implements OnInit {
   }
 
   changeStep(change: number) {
-    this.status = change;
+    this.step = change;
+
+  }
+
+  returnCurrentText(): string {
+    let value: string = "";
+    const step = "step" + this.step;
+    value = this.completeText[step];
+    return value;
+  }
+
+  returnCurrentQuestion(): Question {
+    const step = "step" + this.step;
+    const Question = this.completeText[step];
+    return Question;
   }
 
 }

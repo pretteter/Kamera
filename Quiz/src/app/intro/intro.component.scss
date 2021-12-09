@@ -4,8 +4,9 @@
   text-align: center;
   max-height: 20%;
   max-width: 20%;
-padding-top: 9%;
+  padding-top: 9%;
   transform: scale(2.5);
+
   // border: 3px solid black;
   div {
     padding: 8px;
@@ -17,5 +18,25 @@ padding-top: 9%;
 
   button {
     background-color: white;
+  }
+}
+
+.question {
+  margin: auto;
+  margin-top: auto;
+  text-align: center;
+  max-height: 20%;
+  max-width: 20%;
+  padding-top: 9%;
+  transform: scale(3);
+
+  .questionText {}
+
+  .answer {
+    margin-top: 10%;
+
+    .button {
+      background-color: blue;
+    }
   }
 }

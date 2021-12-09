@@ -1,0 +1,11 @@
+{
+  "step0": "Hallo",
+  "step1": {
+    "question": "Was trägt der Mann um seinen Hals?",
+    "answers": [
+      "Glocken",
+      "Einen Orden wie die Narrenmutter",
+      "test"
+    ]
+  }
+}

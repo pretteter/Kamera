@@ -1,17 +1,28 @@
-<div id="greetings" *ngIf="status===1">
+<div *ngIf="step===0" id="greetings">
   <div>
-    {{greetings}}
+    {{returnCurrentText()}}
   </div>
   <br>
   <br>
-  <button mat-stroked-button (click)='changeStep(2)'>Zur Einführung</button>
+  <button (click)='changeStep(1)'>
+    <mat-icon>time_to_leave</mat-icon>
+  </button>
 </div>
 
-<div id="2step" *ngIf="status===2">
+<div class="question" *ngIf="step===1">
+  <div class="questionText">{{returnCurrentQuestion().question}}</div>
+  <div class="answer" *ngFor="let answer of returnCurrentQuestion().answers">
+    <button>
+      {{answer}}
+  </button>
+  </div>
+</div>
+
+
+<!--
+<div id="2step" *ngIf="step===3">
   <div>
-    {{loadGreeting()}}
+    <app-mainpart></app-mainpart>
   </div>
   <br>
-  <br>
-  <button mat-stroked-button (click)='changeStep(1)'>2ter Schritt</button>
-</div>
+  <br> -->
