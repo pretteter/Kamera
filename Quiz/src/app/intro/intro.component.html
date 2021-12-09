@@ -9,12 +9,12 @@
   </button>
 </div>
 
-<div class="question" *ngIf="step===1">
+<div class="question" *ngIf="step>=1">
   <div class="questionText">{{returnCurrentQuestion().question}}</div>
   <div class="answer" *ngFor="let answer of returnCurrentQuestion().answers">
-    <button>
+    <button (click)='chooseVersion(answer)'>
       {{answer}}
-  </button>
+    </button>
   </div>
 </div>
 

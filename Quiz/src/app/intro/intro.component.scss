@@ -9,25 +9,27 @@
 
   // border: 3px solid black;
   div {
-    padding: 8px;
-    color: gray;
+    padding: 15px;
+    color: black;
+    background-color: rgb(204, 217, 235);
     font-size: large;
-    border: 1px solid black;
-    border-radius: 60px;
+    //border: 1px solid black;
+    border-radius: 35px;
   }
 
   button {
     background-color: white;
+    border: none;
+    color: rgb(66, 65, 65);
   }
 }
 
 .question {
   margin: auto;
-  margin-top: auto;
+  margin-top: 15%;
   text-align: center;
   max-height: 20%;
-  max-width: 20%;
-  padding-top: 9%;
+  max-width: 15%;
   transform: scale(3);
 
   .questionText {}
@@ -35,8 +37,14 @@
   .answer {
     margin-top: 10%;
 
-    .button {
-      background-color: blue;
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: rgb(204, 217, 235);
+      border: none;
+      border-radius: 10px;
+      font-size: large;
     }
   }
 }

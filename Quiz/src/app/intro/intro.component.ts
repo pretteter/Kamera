@@ -76,5 +76,15 @@ export class IntroComponent implements OnInit {
     return Question;
   }
 
+  chooseVersion(clickedOption: string) {
+    if (clickedOption === this.returnCurrentQuestion().answers[0]) {
+      //console.log(this.returnCurrentQuestion().answers[0]);
+    }
+    else {
+      //console.log(this.returnCurrentQuestion().answers[1]);
+      this.changeStep(2);
+    }
+  }
+
 }
 
