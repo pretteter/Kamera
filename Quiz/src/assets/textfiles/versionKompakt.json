@@ -1,5 +1,41 @@
 {
   "audio": {
+    "question1": {
+      "beforequestion": "",
+      "question": "/assets/audiofiles/versionKompakt/intro.mp3",
+      "answers": [{
+          "text": "/assets/audiofiles/versionKompakt/intro.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/intro.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/intro.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/intro.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/intro.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/intro.mp3"
+        }
+      ],
+      "afterquestion": ""
+    },
+    "question2": {
+      "beforequestion": "",
+      "question": "/assets/audiofiles/versionKompakt/second.mp3",
+      "answers": [{
+          "text": "/assets/audiofiles/versionKompakt/second.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/second.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/second.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+        }
+      ],
+      "afterquestion": ""
+    }
 
   },
   "questions": {
