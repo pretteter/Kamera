@@ -59,7 +59,7 @@ export class MainpartComponent implements OnInit {
     this.currentAudio.onpause = () => {
       if (this.checkIfAudioAutoStep()) {
         if (this.checkIfAudiopartExiste(partOfQuestion)) {
-          console.log("next part " + this.nextAudioAutoplay())
+          // console.log("next part " + this.nextAudioAutoplay())
           this.playAudio(this.nextAudioAutoplay())
         }
       }
