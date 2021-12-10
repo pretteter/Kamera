@@ -22,15 +22,15 @@
       "beforequestion": "",
       "question": "/assets/audiofiles/versionKompakt/second.mp3",
       "answers": [{
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
+          "text": "/assets/audiofiles/versionKompakt/first.mp3",
           "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
         },
         {
           "text": "/assets/audiofiles/versionKompakt/second.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+          "feedback": "/assets/audiofiles/versionKompakt/fourth.mp3"
         },
         {
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
+          "text": "/assets/audiofiles/versionKompakt/third.mp3",
           "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
         }
       ],
@@ -38,6 +38,9 @@
     }
 
   },
+
+
+
   "questions": {
     "question1": {
       "textvalue": "!!!!Wer könnte die Frau im roten Kleid im Mittelpunkt der Narren sein?",
