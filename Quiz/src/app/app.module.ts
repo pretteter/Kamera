@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MainpartComponent } from './mainpart/mainpart.component';
 import {MatIconModule} from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroComponent,
-    MainpartComponent
+    MainpartComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

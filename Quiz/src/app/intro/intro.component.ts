@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   HttpClient, HttpErrorResponse
 } from '@angular/common/http';
+import {Router } from '@angular/router';
 // import { Socket } from 'src/app/service/serverConnection.js'
 
 //declare var serverData: any;
@@ -22,7 +23,7 @@ export class IntroComponent implements OnInit {
 
   public completeText: any = {};
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, private router: Router) {
     this.httpClient = http;
     this.step = 0;
   }
@@ -77,12 +78,33 @@ export class IntroComponent implements OnInit {
   }
 
   chooseVersion(clickedOption: string) {
-    if (clickedOption === this.returnCurrentQuestion().answers[0]) {
-      //console.log(this.returnCurrentQuestion().answers[0]);
+    /*if (clickedOption === this.returnCurrentQuestion().answers[0]) {
+      console.log(this.returnCurrentQuestion().answers[0]);
     }
     else {
       //console.log(this.returnCurrentQuestion().answers[1]);
       this.changeStep(2);
+    }*/
+    switch (clickedOption) {
+      case this.completeText["step1"].answers[0]: {
+        console.log(this.completeText["step1"].answers[0]);
+        this.router.navigate(['/mainpart']);
+        break;
+      }
+      case this.completeText["step1"].answers[1]: {
+        console.log(this.completeText["step1"].answers[1]);
+        this.changeStep(2);
+        break;
+      }
+      case this.completeText["step2"].answers[0]: {
+        console.log(this.completeText["step2"].answers[0]);
+        break;
+      }
+      case this.completeText["step2"].answers[1]: {
+        console.log(this.completeText["step2"].answers[1]);
+        break;
+      }
+
     }
   }
 
