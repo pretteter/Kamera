@@ -1,1 +1,17 @@
-<p>Hallo  ;)</p>
+<div class="question" *ngIf="completeJson">
+  <div *ngIf="showFeedback===false" class="questionText">
+    {{completeJson["questions"]["question" + currentQuestion]?completeJson["questions"]["question" + currentQuestion]["textvalue"]:"Keine Frage verfügbar"}}
+  </div>
+  <div class="answer" *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers">
+    <button (click)="showFeedback=true;selectedAnswer=answer" *ngIf="showFeedback===false">
+      {{answer?.text}}
+    </button>
+  </div>
+  <div *ngIf="showFeedback===true">
+    {{selectedAnswer?.feedback}}
+    <br>
+    <button (click)="stepAfterAudioEnd()">
+      {{"weiter"}}
+    </button>
+  </div>
+</div>

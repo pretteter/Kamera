@@ -10,7 +10,7 @@
 </div>
 
 <div class="question" *ngIf="step>=1">
-  <div class="questionText">{{returnCurrentQuestion().question}}</div>
+  <div class="questionText">{{returnCurrentQuestion().textvalue}}</div>
   <div class="answer" *ngFor="let answer of returnCurrentQuestion().answers">
     <button (click)='chooseVersion(answer)'>
       {{answer}}

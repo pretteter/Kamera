@@ -1,0 +1,50 @@
+{
+  "audio": {
+
+  },
+  "questions": {
+    "question1": {
+      "textvalue": "Bulk-Versiom",
+      "answers": [{
+          "text": "Die Lehrerin der Narren",
+          "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
+          "iscorrect": false
+        },
+        {
+          "text": "Die Mutter der Narren",
+          "feedback": "Richtig! Die Frau im Mittelpunkt der Szene stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“. Daraus folgt, dass es sich hierbei, wie richtig vermutet, um die Narrenmutter handelt.",
+          "iscorrect": true
+        },
+        {
+          "text": "Die Königin der Narren",
+          "feedback": "Im Mittelpunkt der Szene steht eine dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden.",
+          "iscorrect": false
+        }
+      ]
+    },
+    "question2": {
+      "textvalue": "!!BulkVersion",
+      "answers": [{
+          "text": "Die Lehrerin der Narren",
+          "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
+          "iscorrect": false
+        },
+        {
+          "text": "Die Mutter der Narren",
+          "feedback": "Richtig! Die Frau im Mittelpunkt der Szene stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“. Daraus folgt, dass es sich hierbei, wie richtig vermutet, um die Narrenmutter handelt.",
+          "iscorrect": true
+        },
+        {
+          "text": "Die Königin der Narren",
+          "feedback": "Im Mittelpunkt der Szene steht eine dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden.",
+          "iscorrect": false
+        }
+      ]
+    }
+  },
+
+
+  "text": {
+
+  }
+}

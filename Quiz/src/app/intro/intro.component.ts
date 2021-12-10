@@ -2,14 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import {
   HttpClient, HttpErrorResponse
 } from '@angular/common/http';
-import {Router } from '@angular/router';
+import { Router } from '@angular/router';
 // import { Socket } from 'src/app/service/serverConnection.js'
 
 //declare var serverData: any;
 
 export interface Question {
-  question: string;
-  answers: string[];
+  textvalue: string;
+  answers: Answer[];
+}
+
+export interface Answer {
+  text: string,
+  feedback: string,
+  isCorrect: boolean
 }
 
 @Component({
@@ -21,7 +27,7 @@ export class IntroComponent implements OnInit {
   private httpClient: HttpClient;
   public step: number;
 
-  public completeText: any = {};
+  public completeJson: any = {};
 
   constructor(http: HttpClient, private router: Router) {
     this.httpClient = http;
@@ -41,8 +47,8 @@ export class IntroComponent implements OnInit {
   getFile(pathToFile: string) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
 
-      this.completeText = JSON.parse(JSON.stringify(data));
-      console.log(this.completeText);
+      this.completeJson = JSON.parse(JSON.stringify(data));
+      console.log(this.completeJson);
       // this.showText.text = data.toString();
       // this.showText.step = this.step;
     },
@@ -67,41 +73,34 @@ export class IntroComponent implements OnInit {
   returnCurrentText(): string {
     let value: string = "";
     const step = "step" + this.step;
-    value = this.completeText[step];
+    value = this.completeJson[step];
     return value;
   }
 
   returnCurrentQuestion(): Question {
     const step = "step" + this.step;
-    const Question = this.completeText[step];
+    const Question = this.completeJson[step];
     return Question;
   }
 
-  chooseVersion(clickedOption: string) {
-    /*if (clickedOption === this.returnCurrentQuestion().answers[0]) {
-      console.log(this.returnCurrentQuestion().answers[0]);
-    }
-    else {
-      //console.log(this.returnCurrentQuestion().answers[1]);
-      this.changeStep(2);
-    }*/
-    switch (clickedOption) {
-      case this.completeText["step1"].answers[0]: {
-        console.log(this.completeText["step1"].answers[0]);
-        this.router.navigate(['/mainpart']);
+  chooseVersion(clickedOption: Answer) {
+     switch (clickedOption) {
+      case this.completeJson["step1"].answers[0]: {
+        console.log(this.completeJson["step1"].answers[0]);
+        this.router.navigate(['/mainpart'], { queryParams: { version: 'bulky' } });
         break;
       }
-      case this.completeText["step1"].answers[1]: {
-        console.log(this.completeText["step1"].answers[1]);
+      case this.completeJson["step1"].answers[1]: {
+        console.log(this.completeJson["step1"].answers[1]);
         this.changeStep(2);
         break;
       }
-      case this.completeText["step2"].answers[0]: {
-        console.log(this.completeText["step2"].answers[0]);
+      case this.completeJson["step2"].answers[0]: {
+        this.router.navigate(['/mainpart'], { queryParams: { version: 'compact' } });
         break;
       }
-      case this.completeText["step2"].answers[1]: {
-        console.log(this.completeText["step2"].answers[1]);
+      case this.completeJson["step2"].answers[1]: {
+        this.router.navigate(['/mainpart'], { queryParams: { version: 'bulky' } });
         break;
       }
 
