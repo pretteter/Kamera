@@ -240,7 +240,7 @@ export class MainpartComponent implements OnInit {
   getFile(pathToFile: string) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
       this.completeJson = JSON.parse(JSON.stringify(data));
-      // this.playAudio(1);
+      this.playAudio("question");
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
