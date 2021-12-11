@@ -21,7 +21,7 @@ export class MainpartComponent implements OnInit {
   completeJson: JSON;
   showFeedback: boolean = false;
   selectedAnswer: Answer;
-  currentAudio = new Audio()
+  currentAudio = new Audio();
 
   constructor(http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.httpClient = http;
@@ -88,33 +88,11 @@ export class MainpartComponent implements OnInit {
       case "answer1text": {
         return "answer2text";
       }
-      case "answer1feedback": {
-        if (this.checkIfAudiopartExiste("afterquestion")) {
-          return "afterquestion";
-        }
-        this.stepAfterFeedback();
-        if (this.checkIfAudiopartExiste("beforequestion")) {
-          return "beforequestion";
-        }
-        if (this.checkIfAudiopartExiste("question"))
-          return "question";
-        else return "";
-      }
       case "answer2text": {
         return "answer3text";
       }
-      case "answer2feedback": {
-        if (this.checkIfAudiopartExiste("afterquestion")) {
-          return "afterquestion";
-        }
-        this.stepAfterFeedback();
-        if (this.checkIfAudiopartExiste("beforequestion")) {
-          return "beforequestion";
-        }
-        if (this.checkIfAudiopartExiste("question"))
-          return "question";
-        else return "";
-      }
+      case "answer1feedback":
+      case "answer2feedback":
       case "answer3feedback": {
         if (this.checkIfAudiopartExiste("afterquestion")) {
           return "afterquestion";
@@ -211,8 +189,8 @@ export class MainpartComponent implements OnInit {
         }
       }
     } catch (e) {
-      return "";
       console.log("Fehler beim Pfad aufwählen der Audiodatei");
+      return "";
     }
   }
 
