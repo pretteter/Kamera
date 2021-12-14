@@ -1,9 +1,12 @@
+<mat-progress-bar mode="determinate" value={{returnCurrentProgress()}}></mat-progress-bar>
 <div class="question" *ngIf="completeJson">
   <div *ngIf="showFeedback===false" class="questionText">
     {{completeJson["questions"]["question" + currentQuestion]?completeJson["questions"]["question" + currentQuestion]["textvalue"]:"Keine Frage verfügbar"}}
   </div>
-  <div class="answer" *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
-    <button [disabled]="!currentAudio.paused" (click)="answerSelect(answer,i)" *ngIf="showFeedback===false">
+  <div class="answer"
+    *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
+    <button [ngClass]="this.version==='child' ? 'buttonChild': ''" [disabled]="!currentAudio.paused"
+      (click)="answerSelect(answer,i)" *ngIf="showFeedback===false">
       {{answer?.text}}
     </button>
   </div>

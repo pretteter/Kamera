@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MainpartComponent } from './mainpart/mainpart.component';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

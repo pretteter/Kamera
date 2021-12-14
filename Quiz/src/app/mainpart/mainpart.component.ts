@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   HttpClient, HttpErrorResponse
 } from '@angular/common/http';
@@ -13,9 +13,9 @@ import { Answer } from '../intro/intro.component';
   templateUrl: './mainpart.component.html',
   styleUrls: ['./mainpart.component.scss']
 })
-export class MainpartComponent implements OnInit {
+export class MainpartComponent implements OnInit, OnDestroy {
   private httpClient: HttpClient;
-  private version: string;
+  version: string;
   currentQuestion: number;
   currentAudioPart: string;
   completeJson: JSON;
@@ -50,28 +50,30 @@ export class MainpartComponent implements OnInit {
   }
 
   playAudio(partOfQuestion: string) {
-    this.currentAudio.src = this.selectAudioPath(partOfQuestion);
-    this.currentAudio.load();
-    this.currentAudio.play();
-    // this.currentAudio.onended = () => {
-    //   alert("The audio has ended");
-    // }
-    this.currentAudio.onpause = () => {
-      if (this.checkIfAudioAutoStep()) {
-        if (this.checkIfAudiopartExiste(partOfQuestion)) {
-          // console.log("next part " + this.nextAudioAutoplay())
-          this.playAudio(this.nextAudioAutoplay())
+    try {
+      this.currentAudio.src = this.selectAudioPath(partOfQuestion);
+      this.currentAudio.load();
+      this.currentAudio.play();
+      // this.currentAudio.onended = () => {
+      //   alert("The audio has ended");
+      // }
+      this.currentAudio.onended = () => {
+        if (this.checkIfAudioAutoStep()) {
+          if (this.checkIfAudiopartExiste(partOfQuestion)) {
+            // console.log("next part " + this.nextAudioAutoplay())
+            this.playAudio(this.nextAudioAutoplay())
+          }
         }
+        // alert("The audio has been paused");
       }
-      // alert("The audio has been paused");
-    }
-    // setTimeout(() => {
-    //   // audio.pause();
-    //   // audio.currentTime = 0;
-    //   this.stopAudio();
-    //   console.log(this.currentAudio.ended);
-    //   console.log(this.currentAudio.paused);
-    // }, 1000)
+      // setTimeout(() => {
+      //   // audio.pause();
+      //   // audio.currentTime = 0;
+      //   this.stopAudio();
+      //   console.log(this.currentAudio.ended);
+      //   console.log(this.currentAudio.paused);
+      // }, 1000)
+    } catch (e) { console.log("error while playing Audio") }
   }
 
   nextAudioAutoplay(currentQuestionIndex?: number): string {
@@ -219,6 +221,7 @@ export class MainpartComponent implements OnInit {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
       this.completeJson = JSON.parse(JSON.stringify(data));
       this.playAudio("question");
+      // setTimeout(()=> {this.stopAudio()}, 1000)
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -231,5 +234,16 @@ export class MainpartComponent implements OnInit {
         }
       }
     );
+  }
+
+  returnCurrentProgress(): number {
+    if (this.completeJson && this.completeJson['questions']) {
+      const maxLength: number = Object.keys(this.completeJson['questions']).length + 1
+      return (this.currentQuestion / maxLength) * 100;
+    }
+    return 0;
+  }
+  ngOnDestroy(): void {
+     this.stopAudio()
   }
 }

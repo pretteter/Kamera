@@ -87,7 +87,7 @@ export class IntroComponent implements OnInit {
     switch (clickedOption) {
       case this.completeJson["step1"].answers[0]: {
         console.log(this.completeJson["step1"].answers[0]);
-        this.router.navigate(['/mainpart'], { queryParams: { version: 'bulky' } });
+        this.router.navigate(['/mainpart'], { queryParams: { version: 'child' } });
         break;
       }
       case this.completeJson["step1"].answers[1]: {
