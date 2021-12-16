@@ -220,7 +220,12 @@ export class MainpartComponent implements OnInit, OnDestroy {
   getFile(pathToFile: string) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
       this.completeJson = JSON.parse(JSON.stringify(data));
-      this.playAudio("question");
+      if (this.checkIfAudiopartExiste("beforequestion")) {
+        this.playAudio("beforequestion");
+      }
+      else {
+        this.playAudio("question");
+      }
       // setTimeout(()=> {this.stopAudio()}, 1000)
     },
       (err: HttpErrorResponse) => {
@@ -244,6 +249,6 @@ export class MainpartComponent implements OnInit, OnDestroy {
     return 0;
   }
   ngOnDestroy(): void {
-     this.stopAudio()
+    this.stopAudio()
   }
 }

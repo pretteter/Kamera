@@ -1,37 +1,37 @@
 {
   "audio": {
     "question1": {
-      "beforequestion": "",
-      "question": "/assets/audiofiles/versionKompakt/second.mp3",
+      "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_1_einleitung.mp3",
+      "question": "/assets/audiofiles/versionKompakt/kompakt_frage_1_frage.mp3",
       "answers": [{
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/intro.mp3"
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_1_antwort_a.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_1_feedback_a.mp3"
         },
         {
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/fourth.mp3"
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_1_antwort_b.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_1_feedback_b.mp3"
         },
         {
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/intro.mp3"
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_1_antwort_c.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_1_feedback_c.mp3"
         }
       ],
       "afterquestion": ""
     },
     "question2": {
       "beforequestion": "",
-      "question": "/assets/audiofiles/versionKompakt/second.mp3",
+      "question": "",
       "answers": [{
-          "text": "/assets/audiofiles/versionKompakt/first.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+          "text": "",
+          "feedback": ""
         },
         {
-          "text": "/assets/audiofiles/versionKompakt/second.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/fourth.mp3"
+          "text": "",
+          "feedback": ""
         },
         {
-          "text": "/assets/audiofiles/versionKompakt/third.mp3",
-          "feedback": "/assets/audiofiles/versionKompakt/second.mp3"
+          "text": "",
+          "feedback": ""
         }
       ],
       "afterquestion": ""
