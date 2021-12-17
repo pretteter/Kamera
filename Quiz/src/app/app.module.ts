@@ -11,13 +11,17 @@ import { MainpartComponent } from './mainpart/mainpart.component';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+//import { EdgeComponent } from './edge/edge.component';
+import { EdgepartComponent } from './edgepart/edgepart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroComponent,
     MainpartComponent,
-    HeaderComponent
+    HeaderComponent,
+    //EdgeComponent,
+    EdgepartComponent
   ],
   imports: [
     BrowserModule,

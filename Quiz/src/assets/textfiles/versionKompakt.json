@@ -43,7 +43,7 @@
 
   "questions": {
     "question1": {
-      "textvalue": "!!!!Wer könnte die Frau im roten Kleid im Mittelpunkt der Narren sein?",
+      "textvalue": "Wer könnte die Frau im roten Kleid im Mittelpunkt der Narren sein?",
       "answers": [{
           "text": "Die Lehrerin der Narren",
           "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
@@ -62,20 +62,20 @@
       ]
     },
     "question2": {
-      "textvalue": "Wer könnte die Frau im roten Kleid im Mittelpunkt der Narren sein?",
+      "textvalue": "Wie bringt ein Narr neue Narren hervor?",
       "answers": [{
-          "text": "Die Lehrerin der Narren",
-          "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
+          "text": "Ein Narr brütet Eier mit neuen Narren aus",
+          "feedback": "Richtig! Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
           "iscorrect": false
         },
         {
-          "text": "Die Mutter der Narren",
-          "feedback": "Richtig! Die Frau im Mittelpunkt der Szene stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“. Daraus folgt, dass es sich hierbei, wie richtig vermutet, um die Narrenmutter handelt.",
+          "text": "Die Narren tanzen solange weiter bis ein neuer Narr zur Welt kommt",
+          "feedback": "Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
           "iscorrect": true
         },
         {
-          "text": "Die Königin der Narren",
-          "feedback": "Im Mittelpunkt der Szene steht eine dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden.",
+          "text": "Die Narrenmutter bringt neue Narren zur Welt",
+          "feedback": "Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
           "iscorrect": false
         }
       ]
