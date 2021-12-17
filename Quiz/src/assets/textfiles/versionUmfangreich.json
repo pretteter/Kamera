@@ -1,5 +1,41 @@
 {
   "audio": {
+    "question1": {
+      "beforequestion": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_einleitung.mp3",
+      "question": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_frage.mp3",
+      "answers": [{
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_antwort_a.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_feedback_a.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_antwort_b.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_feedback_b.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_antwort_c.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_1_feedback_c.mp3"
+        }
+      ],
+      "afterquestion": ""
+    },
+    "question2": {
+      "beforequestion": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_einleitung.mp3",
+      "question": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_frage.mp3",
+      "answers": [{
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_antwort_a.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_feedback_a.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_antwort_b.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_feedback_b.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_antwort_c.mp3",
+          "feedback": "/assets/audiofiles/versionUmfangreich/umfangreich_frage_2_feedback_c.mp3"
+        }
+      ],
+      "afterquestion": ""
+    }
 
   },
   "questions": {
@@ -24,6 +60,25 @@
     },
     "question2": {
       "textvalue": "!!BulkVersion",
+      "answers": [{
+          "text": "Die Lehrerin der Narren",
+          "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
+          "iscorrect": false
+        },
+        {
+          "text": "Die Mutter der Narren",
+          "feedback": "Richtig! Die Frau im Mittelpunkt der Szene stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“. Daraus folgt, dass es sich hierbei, wie richtig vermutet, um die Narrenmutter handelt.",
+          "iscorrect": true
+        },
+        {
+          "text": "Die Königin der Narren",
+          "feedback": "Im Mittelpunkt der Szene steht eine dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden.",
+          "iscorrect": false
+        }
+      ]
+    },
+    "question3": {
+      "textvalue": "Frage",
       "answers": [{
           "text": "Die Lehrerin der Narren",
           "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",

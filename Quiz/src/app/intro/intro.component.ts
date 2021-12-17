@@ -15,7 +15,7 @@ export interface Question {
 export interface Answer {
   text: string,
   feedback: string,
-  isCorrect: boolean
+  iscorrect: boolean
 }
 
 @Component({

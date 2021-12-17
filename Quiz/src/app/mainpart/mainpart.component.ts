@@ -248,7 +248,33 @@ export class MainpartComponent implements OnInit, OnDestroy {
     }
     return 0;
   }
+
   ngOnDestroy(): void {
-    this.stopAudio()
+    this.stopAudio();
+  }
+
+  selectPicturePath(): string {
+    if (this.version === 'child') {
+      if (this.showFeedback && this.selectedAnswer?.iscorrect === false) {
+        console.log(this.completeJson['picture'].goose_wrong)
+        return this.completeJson['picture'].goose_wrong;
+      }
+      if (this.showFeedback && this.selectedAnswer?.iscorrect === true) {
+        return this.completeJson['picture'].goose_right;
+      }
+    }
+    return this.returnIconPath()
+
+  }
+
+  returnIconPath(): string {
+    switch (this.selectedAnswer?.iscorrect) {
+      case true: {
+        return "assets/icons/check.png";
+      }
+      case false: {
+        return "assets/icons/step.png";
+      }
+    }
   }
 }
