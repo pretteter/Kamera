@@ -29,7 +29,7 @@ function draw() {
 
 function drawRightHand(hand) {
   if (hand?.jointType === 11) {
-    sendDataToServer(hand);
+    sendDataToPlate(hand);
   }
   // Use handColors object to store unique colors for each hand  
 
@@ -63,8 +63,8 @@ function drawRightHand(hand) {
   }
 }
 
-function sendDataToServer(data) {
-//  console.table(data)
- sendData(data);
-}
+// function sendDataToServer(data) {
+// //  console.table(data)
+//  sendData(data);
+// }
 

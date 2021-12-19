@@ -11,16 +11,20 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
-socket.on("toClient", (data) => {
+socket.on("camQuiz", (data) => {
+  console.log(data)
+})
+
+socket.on("plateQuiz", (data) => {
   console.log(data)
 })
 
 
-var serverData = (function () {
-  return {
-    sendData: function sendData(data) {
-      // console.table(data);
-      socket.emit('quizData', data);
-    }
-  }
-})(serverData || {})
+// var serverData = (function () {
+//   return {
+//     sendData: function sendData(data) {
+//       // console.table(data);
+//       socket.emit('quizData', data);
+//     }
+//   }
+// })(serverData || {})

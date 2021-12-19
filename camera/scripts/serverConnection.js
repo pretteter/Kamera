@@ -11,11 +11,15 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
-socket.on("toClient", (data) => {
-  console.log(data)
-})
+// socket.on("toClient", (data) => {
+//   console.log(data)
+// })
 
-function sendData(data) {
+function sendDataToQuiz(data) {
   // console.table(data);
-  socket.emit('camData', data);
+  socket.emit('camQuiz', data);
+}
+function sendDataToPlate(data) {
+  console.table(data);
+  socket.emit('camPlate', data);
 }
