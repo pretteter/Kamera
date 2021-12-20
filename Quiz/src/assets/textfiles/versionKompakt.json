@@ -74,7 +74,7 @@
           "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_c.mp3"
         }
       ],
-      "afterquestion": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_schluss.mp3"
+      "afterquestion": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_ende.mp3"
     }
   },
   "questions": {
