@@ -79,11 +79,35 @@
           "iscorrect": false
         }
       ]
+    },
+      "question3": {
+      "textvalue": "Wofür steht die Jahreszahl 1528 auf dem Dachgiebel der Mühle?",
+      "answers": [{
+          "text": "Für das Baujahr der Mühle",
+          "feedback": "Das Baujahr der Mühle ist leider nicht bekannt. Bei der Jahreszahl 1528 handelt es sich um das Entstehungsjahr des Ambraser Tellers.",
+          "iscorrect": false
+        },
+        {
+          "text": "Für das Entstehungsjahr des Tellers",
+          "feedback": "Richtig! Die Zahl 1528 auf dem Dachgiebel der Mühle steht für das Entstehungsjahr des Ambraser Tellers.",
+          "iscorrect": true
+        },
+        {
+          "text": "Für das Gründungsjahr des Dorfes",
+          "feedback": "Das Gründungsjahr des Dorfes ist leider nicht bekannt. Bei der Jahreszahl 1528 handelt es sich um das Entstehungsjahr des Ambraser Tellers.",
+          "iscorrect": false
+        }
+      ]
     }
   },
 
 
 
+
+
+
+
+  
   "text": {
   }
 }
