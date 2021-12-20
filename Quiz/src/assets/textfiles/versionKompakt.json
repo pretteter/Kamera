@@ -35,8 +35,24 @@
         }
       ],
       "afterquestion": ""
-    }
-
+    },
+    "question3": {
+      "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_3_einleitung.mp3",
+      "question": "/assets/audiofiles/versionKompakt/kompakt_frage_3_frage.mp3",
+      "answers": [{
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_3_antwort_a.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_3_feedback_a.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_3_antwort_b.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_3_feedback_b.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_3_antwort_c.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_3_feedback_c.mp3"
+        }
+      ],
+      "afterquestion": 
   },
 
 
