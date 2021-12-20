@@ -36,6 +36,7 @@
       ],
       "afterquestion": ""
     },
+
     "question3": {
       "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_3_einleitung.mp3",
       "question": "/assets/audiofiles/versionKompakt/kompakt_frage_3_frage.mp3",
@@ -52,8 +53,12 @@
           "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_3_feedback_c.mp3"
         }
       ],
-      "afterquestion": 
+      "afterquestion": ""
+    }
+
+
   },
+  
 
 
 
