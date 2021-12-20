@@ -104,12 +104,12 @@
         {
           "text": "Ein Narr brütet Eier mit neuen Narren aus",
           "feedback": "Richtig! Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
-          "iscorrect": false
+          "iscorrect": true
         },
         {
           "text": "Die Narren tanzen solange weiter bis ein neuer Narr zur Welt kommt",
           "feedback": "Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
-          "iscorrect": true
+          "iscorrect": false
         },
         {
           "text": "Die Narrenmutter bringt neue Narren zur Welt",
