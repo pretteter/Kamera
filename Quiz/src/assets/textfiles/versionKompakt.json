@@ -3,7 +3,8 @@
     "question1": {
       "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_1_einleitung.mp3",
       "question": "/assets/audiofiles/versionKompakt/kompakt_frage_1_frage.mp3",
-      "answers": [{
+      "answers": [
+        {
           "text": "/assets/audiofiles/versionKompakt/kompakt_frage_1_antwort_a.mp3",
           "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_1_feedback_a.mp3"
         },
@@ -21,7 +22,8 @@
     "question2": {
       "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_2_einleitung.mp3",
       "question": "/assets/audiofiles/versionKompakt/kompakt_frage_2_frage.mp3",
-      "answers": [{
+      "answers": [
+        {
           "text": "/assets/audiofiles/versionKompakt/kompakt_frage_2_antwort_a.mp3",
           "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_2_feedback_a.mp3"
         },
@@ -36,11 +38,11 @@
       ],
       "afterquestion": ""
     },
-
     "question3": {
       "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_3_einleitung.mp3",
       "question": "/assets/audiofiles/versionKompakt/kompakt_frage_3_frage.mp3",
-      "answers": [{
+      "answers": [
+        {
           "text": "/assets/audiofiles/versionKompakt/kompakt_frage_3_antwort_a.mp3",
           "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_3_feedback_a.mp3"
         },
@@ -54,18 +56,32 @@
         }
       ],
       "afterquestion": ""
+    },
+    "question4": {
+      "beforequestion": "/assets/audiofiles/versionKompakt/kompakt_frage_4_einleitung.mp3",
+      "question": "/assets/audiofiles/versionKompakt/kompakt_frage_4_frage.mp3",
+      "answers": [
+        {
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_4_antwort_a.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_a.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_4_antwort_b.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_b.mp3"
+        },
+        {
+          "text": "/assets/audiofiles/versionKompakt/kompakt_frage_4_antwort_c.mp3",
+          "feedback": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_c.mp3"
+        }
+      ],
+      "afterquestion": "/assets/audiofiles/versionKompakt/kompakt_frage_4_feedback_schluss.mp3"
     }
-
-
   },
-  
-
-
-
   "questions": {
     "question1": {
       "textvalue": "Wer könnte die Frau im roten Kleid im Mittelpunkt der Narren sein?",
-      "answers": [{
+      "answers": [
+        {
           "text": "Die Lehrerin der Narren",
           "feedback": "Die Frau im Mittelpunkt der Szene ist die dominierende Person. Es handelt sich hierbei um die Narrenmutter. Sie stellt sich mit folgendem Spruch vor: „Ich bin ain muoter der narren worden / am hals trag ich den orden“.",
           "iscorrect": false
@@ -84,7 +100,8 @@
     },
     "question2": {
       "textvalue": "Wie bringt ein Narr neue Narren hervor?",
-      "answers": [{
+      "answers": [
+        {
           "text": "Ein Narr brütet Eier mit neuen Narren aus",
           "feedback": "Richtig! Wie links am Zaun zu sehen ist, brütet einer der Narren Eier aus.",
           "iscorrect": false
@@ -101,9 +118,10 @@
         }
       ]
     },
-      "question3": {
+    "question3": {
       "textvalue": "Wofür steht die Jahreszahl 1528 auf dem Dachgiebel der Mühle?",
-      "answers": [{
+      "answers": [
+        {
           "text": "Für das Baujahr der Mühle",
           "feedback": "Das Baujahr der Mühle ist leider nicht bekannt. Bei der Jahreszahl 1528 handelt es sich um das Entstehungsjahr des Ambraser Tellers.",
           "iscorrect": false
@@ -119,16 +137,27 @@
           "iscorrect": false
         }
       ]
+    },
+    "question4": {
+      "textvalue": "Welche Person auf dem Bild könnte der Zunftmeister sein?",
+      "answers": [
+        {
+          "text": "Der Mann mit der gelben Eselsmütze, rechts im Bild",
+          "feedback": "Der Zunfmeister der Narren ist die Person links im Bild mit dem gelben Beinkleid. Zu erkennen an dem Narrenorden, den er um den Hals trägt.",
+          "iscorrect": false
+        },
+        {
+          "text": "Der Mann auf der Brücke mit dem schwarzen Hut und den Eselsohren",
+          "feedback": "Der Zunfmeister der Narren ist die Person links im Bild mit dem gelben Beinkleid. Zu erkennen an dem Narrenorden, den er um den Hals trägt.",
+          "iscorrect": false
+        },
+        {
+          "text": "Der Mann auf der Brücke mit dem gelben Beinkleid, links im Bild",
+          "feedback": "Richtig! Kolman trägt nicht nur ein auffälliges Beinkleid, sondern auch einen Narrenorden um den Hals.",
+          "iscorrect": true
+        }
+      ]
     }
   },
-
-
-
-
-
-
-
-  
-  "text": {
-  }
+  "text": {}
 }
