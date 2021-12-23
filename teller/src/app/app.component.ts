@@ -3,7 +3,6 @@ import {
   HttpClient, HttpErrorResponse
 } from '@angular/common/http';
 
-declare function camData(): any;
 declare var serverData: any;
 
 @Component({
@@ -15,6 +14,12 @@ export class AppComponent implements OnInit {
   title = 'teller';
   private httpClient: HttpClient;
 
+  pathToEdge: string;
+  pathToCenter: string;
+
+  pathToJson: string;
+
+  currentRotation: number = 0;
 
   constructor(http: HttpClient) {
     this.httpClient = http;
@@ -22,15 +27,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // camData();
-    let x = serverData.camData()
-    console.log(x)
-
+    serverData.camData(this.returnDataFromCam);
+    this.getFile('/assets/picturePath.json');
   }
 
-
+  returnDataFromCam(data: any) {
+    console.log(data);
+  }
 
   getFile(pathToFile: string) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
+      this.pathToEdge = data["rand"];
+      this.pathToCenter = data["mitte"];
 
     },
       (err: HttpErrorResponse) => {
@@ -44,5 +52,14 @@ export class AppComponent implements OnInit {
         }
       }
     );
+  }
+
+  async rotate(deg: number) {
+    this.currentRotation += deg;
+    await this.delay(1);
+    this.rotate(1);
+  }
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

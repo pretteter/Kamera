@@ -122,32 +122,18 @@ export class MainpartComponent implements OnInit, OnDestroy {
 
   checkIfAudioAutoStep(): boolean {
     switch (this.currentAudioPart) {
-      case "beforequestion": {
-        return true;
-      }
-      case "afterquestion": {
-        return true;
-      }
-      case "question": {
-        return true;
-      }
-      case "answer1text": {
-        return true;
-      }
-      case "answer1feedback": {
-        return true;
-      }
-      case "answer2text": {
-        return true;
-      }
-      case "answer2feedback": {
+      case "beforequestion":
+      case "afterquestion":
+      case "question":
+      case "answer1text":
+      case "answer1feedback":
+      case "answer2text":
+      case "answer2feedback":
+      case "answer3feedback": {
         return true;
       }
       case "answer3text": {
         return false;
-      }
-      case "answer3feedback": {
-        return true;
       }
       default: {
         return false

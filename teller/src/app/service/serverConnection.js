@@ -11,18 +11,11 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
-
-function camData() {
-  socket.on("cam", (data) => {
-    console.log(data)
-  })
-}
-
 var serverData = (function () {
   return {
-    camData: function () {
+    camData: function (x) {
       socket.on("cam", (data) => {
-        console.log(data)
+        x(data);
       })
     }
   }
