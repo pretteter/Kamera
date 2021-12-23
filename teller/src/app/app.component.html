@@ -1,7 +1,7 @@
-Test
 <div id="completePicture">
-  <img id="edge" [ngStyle]="{'transform': 'rotate(' + currentRotation + 'deg)'}" src="{{pathToEdge?pathToEdge:''}}" alt="">
+  <img id="edge" [ngStyle]="{'transform': 'rotate(' + currentRotation + 'deg)'}" src="{{pathToEdge?pathToEdge:''}}"
+    alt="">
   <img id="center" src="{{pathToCenter?pathToCenter:''}}" alt="">
-  <!-- <router-outlet></router-outlet> -->
+  <router-outlet></router-outlet>
 </div>
-<button (click)="rotate(20)">drehen</button>
+<button (click)="startMovement()">drehen</button>

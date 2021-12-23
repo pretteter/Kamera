@@ -54,11 +54,41 @@ export class AppComponent implements OnInit {
     );
   }
 
-  async rotate(deg: number) {
-    this.currentRotation += deg;
-    await this.delay(1);
-    this.rotate(1);
+  async stopMovement() {
+
   }
+
+  async startMovement() {
+    await this.rotate(0.01);
+  }
+
+  async rotate(deg: number, stop?: boolean) {
+
+
+
+    if (deg >= 0.5 && !stop) {
+      deg += 0.01;
+      if (this.currentRotation >= 360) { this.currentRotation = 0; }
+      this.currentRotation += deg;
+      await this.delay(1);
+      this.rotate(deg, true);
+    }
+    else if (deg < 0.5 && !stop) {
+      deg += 0.01;
+      if (this.currentRotation >= 360) { this.currentRotation = 0; }
+      this.currentRotation += deg;
+      await this.delay(1);
+      this.rotate(deg);
+    }
+    else if (deg > 0 && stop) {
+      deg -= 0.01;
+      if (this.currentRotation >= 360) { this.currentRotation = 0; }
+      this.currentRotation += deg;
+      await this.delay(1);
+      this.rotate(deg, true);
+    }
+  }
+
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

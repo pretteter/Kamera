@@ -20,6 +20,6 @@ function sendDataToQuiz(data) {
   socket.emit('camQuiz', data);
 }
 function sendDataToPlate(data) {
-  console.table(data);
+  // console.table(data);
   socket.emit('camPlate', data);
 }
