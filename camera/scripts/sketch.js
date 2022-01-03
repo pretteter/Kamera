@@ -1,14 +1,20 @@
-// Declare Kinectron
-var kinectron = null;
-// Create P5 Canvas
 var myCanvas = null;
 
-// Create objects to store and access hands
-var handColors = {};
-var hands = {};
+// Declare kinectron 
+var kinectron = null;
+
+// drawHand variables
+var start = 30;
+var target = 100;
+var diameter = start;
+var light = 255;
+var dark = 100;
+var hueValue = light;
+var lerpAmt = 0.3;
+var state = 'ascending';
 
 function setup() {
-  myCanvas = createCanvas(512, 424);
+  myCanvas = createCanvas(500, 500);
   background(0);
   noStroke();
 
@@ -19,52 +25,101 @@ function setup() {
   // Connect with application over peer
   kinectron.makeConnection();
 
-  // Request right hand and set callback for received hand
-  kinectron.startTrackedJoint(kinectron.HANDRIGHT, drawRightHand);
+  // Request all tracked bodies and pass data to your callback
+  kinectron.startTrackedBodies(bodyTracked);
 }
 
 function draw() {
 
 }
 
-function drawRightHand(hand) {
-  if (hand?.jointType === 11) {
-    sendDataToPlate(hand);
+function bodyTracked(body) {
+  background(0, 20);
+
+  // Get all the joints off the tracked body and do something with them
+  kinectron.getJoints(drawJoint);
+
+  // Get the hands off the tracked body and do somethign with them
+  kinectron.getHands(drawHands);
+}
+
+// Draw skeleton
+function drawJoint(joint) {
+if(joint.jointType==23 && joint.trackingState==2){
+  // console.table(joint)
+   console.log("rightHand")
+}
+  // console.table(joint)
+
+  fill(100);
+
+  // Kinect location data needs to be normalized to canvas size
+  ellipse(joint.depthX * myCanvas.width, joint.depthY * myCanvas.height, 15, 15);
+
+  fill(200);
+
+  // Kinect location data needs to be normalized to canvas size
+  ellipse(joint.depthX * myCanvas.width, joint.depthY * myCanvas.height, 3, 3);
+}
+
+// Draw hands
+function drawHands(hands) {
+
+  //check if hands are touching 
+  if ((Math.abs(hands.leftHand.depthX - hands.rightHand.depthX) < 0.01) && (Math.abs(hands.leftHand.depthY - hands.rightHand.depthY) < 0.01)) {
+    hands.leftHandState = 'clapping';
+    hands.rightHandState = 'clapping';
   }
-  // Use handColors object to store unique colors for each hand  
 
-  // If we already have a color for incoming hand
-  if (hand.trackingId in handColors) {
-    // Create color property and give the hand its assigned color
-    hand.color = handColors[hand.trackingId];
-  } else {
-    // If we don't have a color for the hand yet
-    // Create a random RGB color
-    var randomColor = [random(255), random(255), random(255)];
-    // Create color property on the hand and assign it a random color
-    hand.color = randomColor;
-    // Add it to an array for easy look up
-    handColors[hand.trackingId] = hand.color;
-  }
+  // draw hand states
+  updateHandState(hands.leftHandState, hands.leftHand);
+  updateHandState(hands.rightHandState, hands.rightHand);
+}
 
-  // Use hands object to store hands for drawing
+// Find out state of hands
+function updateHandState(handState, hand) {
+  switch (handState) {
+    case 'closed':
+      drawHand(hand, 1, 255);
+      break;
 
-  // Update or create the hand in the hands object
-  hands[hand.trackingId] = hand;
+    case 'open':
+      drawHand(hand, 0, 255);
+      break;
 
-  // Clear background
-  background(0);
+    case 'lasso':
+      drawHand(hand, 0, 255);
+      break;
 
-  // Draw an ellipse at each hand's location in its designated color 
-  for (var key in hands) {
-    var trackedHand = hands[key];
-    fill(trackedHand.color[0], trackedHand.color[1], trackedHand.color[2]);
-    ellipse(trackedHand.depthX * myCanvas.width, trackedHand.depthY * myCanvas.height, 50, 50);
+      // Created new state for clapping
+    case 'clapping':
+      drawHand(hand, 1, 'red');
   }
 }
 
-// function sendDataToServer(data) {
-// //  console.table(data)
-//  sendData(data);
-// }
+// Draw the hands based on their state
+function drawHand(hand, handState, color) {
 
+  if (handState === 1) {
+    state = 'ascending';
+  }
+
+  if (handState === 0) {
+    state = 'descending';
+  }
+
+  if (state == 'ascending') {
+    diameter = lerp(diameter, target, lerpAmt);
+    hueValue = lerp(hueValue, dark, lerpAmt);
+  }
+
+  if (state == 'descending') {
+    diameter = lerp(diameter, start, lerpAmt);
+    hueValue = lerp(hueValue, light, lerpAmt);
+  }
+
+  fill(color);
+
+  // Kinect location needs to be normalized to canvas size
+  ellipse(hand.depthX * myCanvas.width, hand.depthY * myCanvas.height, diameter, diameter);
+}
