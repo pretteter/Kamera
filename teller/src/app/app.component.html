@@ -1,7 +1,7 @@
 <div id="completePicture">
-  <img id="edge" [ngStyle]="{'transform': 'rotate(' + currentRotation + 'deg)'}" src="{{pathToEdge?pathToEdge:''}}"
+  <img id="edge" [ngStyle]="{'transform': 'rotate(' + currentRotation + 'deg)'}" src="{{configData?configData['picturePath']['rand']:''}}"
     alt="">
-  <img id="center" src="{{pathToCenter?pathToCenter:''}}" alt="">
+  <img id="center" src="{{configData?configData['picturePath']['mitte']:''}}" alt="">
   <router-outlet></router-outlet>
 </div>
-<button (click)="startMovement()">drehen</button>
+<button style="size: 100px;" (click)="startMovement()">drehen</button>

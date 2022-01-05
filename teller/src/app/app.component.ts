@@ -14,12 +14,14 @@ export class AppComponent implements OnInit {
   title = 'teller';
   private httpClient: HttpClient;
 
-  pathToEdge: string;
-  pathToCenter: string;
+  configData;
 
   pathToJson: string;
 
   currentRotation: number = 0;
+  currentPartOfPlate: number = 1;
+
+  currentAudio = new Audio();
 
   constructor(http: HttpClient) {
     this.httpClient = http;
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // camData();
     serverData.camData(this.returnDataFromCam);
-    this.getFile('/assets/picturePath.json');
+    this.getFile('/assets/config.json');
   }
 
   returnDataFromCam(data: any) {
@@ -37,8 +39,7 @@ export class AppComponent implements OnInit {
 
   getFile(pathToFile: string) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
-      this.pathToEdge = data["rand"];
-      this.pathToCenter = data["mitte"];
+      this.configData = data;
 
     },
       (err: HttpErrorResponse) => {
@@ -63,9 +64,7 @@ export class AppComponent implements OnInit {
   }
 
   async rotate(deg: number, stop?: boolean) {
-
-
-
+    //start bremsen
     if (deg >= 0.5 && !stop) {
       deg += 0.01;
       if (this.currentRotation >= 360) { this.currentRotation = 0; }
@@ -73,6 +72,7 @@ export class AppComponent implements OnInit {
       await this.delay(1);
       this.rotate(deg, true);
     }
+    //beschleunigt
     else if (deg < 0.5 && !stop) {
       deg += 0.01;
       if (this.currentRotation >= 360) { this.currentRotation = 0; }
@@ -80,6 +80,7 @@ export class AppComponent implements OnInit {
       await this.delay(1);
       this.rotate(deg);
     }
+    //bremsen
     else if (deg > 0 && stop) {
       deg -= 0.01;
       if (this.currentRotation >= 360) { this.currentRotation = 0; }
@@ -87,9 +88,104 @@ export class AppComponent implements OnInit {
       await this.delay(1);
       this.rotate(deg, true);
     }
+    if (deg <= 0) {
+      console.log("currentRotation " + this.currentRotation)
+      this.afterStopOfRotation();
+    }
+  }
+
+  afterStopOfRotation() {
+    if (this.configData) {
+      for (let [index, element] of this.configData['plateSection'].entries()) {
+        const firstCoordinate: number = element[index + 1]["from"];
+        const secondCoordinate: number = element[index + 1]["until"];
+        console.log("first " + firstCoordinate)
+        console.log("second " + secondCoordinate)
+        console.log("currentRotation " + this.currentRotation)
+        if (this.checkPartOfPlate(Number(firstCoordinate), Number(secondCoordinate))) {
+          this.currentPartOfPlate = index + 1;
+          console.log("partOfPlate = " + this.currentPartOfPlate)
+          break;
+        }
+      }
+      this.playAudio();
+    }
+
+  }
+
+  checkPartOfPlate(start: number, end: number): boolean {
+    if (start < end) {
+      if (this.currentRotation >= start && this.currentRotation <= end) {
+        return true;
+      }
+    }
+    if (start > end) {
+      if (this.currentRotation > start || this.currentRotation < end) {
+        return true;
+      }
+    }
+    return false;
   }
 
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+  stopAudio() {
+    this.currentAudio.pause();
+    this.currentAudio.currentTime = 0;
+  }
+
+ async playAudio() {
+    try {
+      if (this.currentAudio.src.split("/assets")[1] !== this.configData['plateSection'][this.currentPartOfPlate][this.currentPartOfPlate + 1]["audioPath"].split("/assets")[1]) {
+        this.stopAudio();
+      }
+
+      console.log(this.currentAudio.src.split("/assets")[1])
+      console.log(this.configData['plateSection'][this.currentPartOfPlate][this.currentPartOfPlate + 1]["audioPath"].split("/assets")[1])
+
+      if (this.currentAudio.src.split("/assets")[1] !== this.configData['plateSection'][this.currentPartOfPlate][this.currentPartOfPlate + 1]["audioPath"].split("/assets")[1]) {
+        // console.log(this.currentAudio.src.split("/assets")[1])
+        console.log("in loop")
+        this.currentAudio.src = this.configData['plateSection'][this.currentPartOfPlate][this.currentPartOfPlate + 1]["audioPath"];
+        this.currentAudio.load();
+        this.currentAudio.play();
+        await this.delay(2000);
+      }
+      this.currentAudio.onended = () => {
+
+      }
+
+    } catch (e) { console.log("error while playing Audio") }
+  }
+  // selectAudioPath(): string {
+  //   switch (this.currentPartOfPlate) {
+  //     case 1: {
+  //       return this.configData['plateSection'][this.currentPartOfPlate]
+  //     }
+  //     case 2: {
+
+  //     }
+  //     case 3: {
+
+  //     }
+  //     case 4: {
+
+  //     }
+  //     case 5: {
+
+  //     }
+  //     case 6: {
+
+  //     }
+  //     case 7: {
+
+  //     }
+  //     case 8: {
+
+  //     }
+
+  //   }
+  // }
 }

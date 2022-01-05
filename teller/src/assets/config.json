@@ -1,0 +1,59 @@
+{
+  "picturePath": {
+    "rand": "/assets/Teller-Bilder/Teller-außenring.png",
+    "mitte": "/assets/Teller-Bilder/Teller.jpg"
+  },
+  "answerCoordinates": {
+    "1": ""
+  },
+  "plateSection": [{
+    "1": {
+      "from": "337",
+      "until": "22",
+      "audioPath":""
+    }
+  }, {
+    "2": {
+      "from": "22",
+      "until": "67",
+      "audioPath":""
+    }
+  }, {
+    "3": {
+      "from": "67",
+      "until": "112",
+      "audioPath":"/assets/audiofiles/first.mp3"
+    }
+  }, {
+    "4": {
+      "from": "112",
+      "until": "157",
+      "audioPath":"/assets/audiofiles/third.mp3"
+    }
+  }, {
+    "5": {
+      "from": "157",
+      "until": "202",
+      "audioPath":"/assets/audiofiles/first.mp3"
+    }
+  }, {
+    "6": {
+      "from": "202",
+      "until": "247",
+      "audioPath":""
+    }
+  }, {
+    "7": {
+      "from": "247",
+      "until": "292",
+      "audioPath":""
+    }
+  }, {
+    "8": {
+      "from": "292",
+      "until": "337",
+      "audioPath":""
+    }
+  }]
+
+}
