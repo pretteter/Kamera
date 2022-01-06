@@ -28,6 +28,7 @@ export class IntroComponent implements OnInit {
   public step: number;
 
   public completeJson: any = {};
+  currentAudio = new Audio();
 
   constructor(http: HttpClient, private router: Router) {
     this.httpClient = http;
@@ -85,26 +86,45 @@ export class IntroComponent implements OnInit {
 
   chooseVersion(clickedOption: Answer) {
     switch (clickedOption) {
-      case this.completeJson["step1"].answers[0]: {
-        console.log(this.completeJson["step1"].answers[0]);
+      case this.completeJson["step2"].answers[0]: {
+        console.log(this.completeJson["step2"].answers[0]);
         this.router.navigate(['/mainpart'], { queryParams: { version: 'child' } });
         break;
       }
-      case this.completeJson["step1"].answers[1]: {
-        console.log(this.completeJson["step1"].answers[1]);
-        this.changeStep(2);
+      case this.completeJson["step2"].answers[1]: {
+        console.log(this.completeJson["step2"].answers[1]);
+        this.changeStep(3);
         break;
       }
-      case this.completeJson["step2"].answers[0]: {
+      case this.completeJson["step3"].answers[0]: {
         this.router.navigate(['/mainpart'], { queryParams: { version: 'compact' } });
         break;
       }
-      case this.completeJson["step2"].answers[1]: {
+      case this.completeJson["step3"].answers[1]: {
         this.router.navigate(['/mainpart'], { queryParams: { version: 'bulky' } });
         break;
       }
 
     }
+  }
+
+  stopAudio() {
+    this.currentAudio.pause();
+    this.currentAudio.currentTime = 0;
+  }
+
+  playAudio() {
+    try {
+      this.currentAudio.src = this.completeJson["audio"];
+      this.currentAudio.load();
+      this.currentAudio.play();
+
+
+      this.currentAudio.onended = () => {
+        this.changeStep(2);
+      }
+
+    } catch (e) { console.log("error while playing Audio") }
   }
 
 }

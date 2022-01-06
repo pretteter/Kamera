@@ -1,15 +1,15 @@
-<div *ngIf="step===0" id="greetings">
+<div *ngIf="step<=1" id="greetings">
   <div>
     {{returnCurrentText()}}
   </div>
   <br>
   <br>
-  <button class="buttonStep" (click)='changeStep(1)'>
+  <button class="buttonStep" [disabled]="step==1" (click)='changeStep(1);playAudio()'>
     <img src="assets/icons/step.png" alt="hallo">
   </button>
 </div>
 
-<div class="question" *ngIf="step>=1">
+<div class="question" *ngIf="step>=2">
   <div class="questionText">{{returnCurrentQuestion().textvalue}}</div>
   <div class="answer" *ngFor="let answer of returnCurrentQuestion().answers">
     <button (click)='chooseVersion(answer)'>

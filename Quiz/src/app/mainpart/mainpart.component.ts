@@ -248,19 +248,24 @@ export class MainpartComponent implements OnInit, OnDestroy {
       if (this.showFeedback && this.selectedAnswer?.iscorrect === true) {
         return this.completeJson['picture'].goose_right;
       }
+      return "";
     }
-    return this.returnIconPath()
+    else return this.returnIconPath();
 
   }
 
   returnIconPath(): string {
-    switch (this.selectedAnswer?.iscorrect) {
-      case true: {
-        return "assets/icons/check.png";
-      }
-      case false: {
-        return "assets/icons/step.png";
+    if (this.showFeedback) {
+      switch (this.selectedAnswer?.iscorrect) {
+        case true: {
+          return "assets/icons/check.png";
+        }
+        case false: {
+          return "assets/icons/cross.png";
+        }
       }
     }
+    else return "";
   }
+
 }

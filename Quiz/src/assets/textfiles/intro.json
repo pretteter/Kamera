@@ -1,13 +1,15 @@
 {
-  "step0": "According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible.",
-  "step1": {
+  "audio": "/assets/audiofiles/BegruessungIntro/Begruessungstext.mp3",
+  "step0": "erster Schritt",
+  "step1": "According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible.",
+  "step2": {
     "textvalue": "Wie alt bist Du oder das jüngste Mitglied aus eurer Gruppe?",
     "answers": [
       "Unter 12 Jahren",
       "Über 12 Jahren"
     ]
   },
-  "step2": {
+  "step3": {
     "textvalue": "Wie viel Zeit hast du für das Quiz?",
     "answers": [
       "15 Minuten",

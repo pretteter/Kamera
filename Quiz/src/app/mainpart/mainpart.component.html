@@ -5,7 +5,7 @@
   </div>
   <div class="answer"
     *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
-    <button [disabled]="!currentAudio.paused" [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
+    <button id="answer{{i+1}}" [disabled]="!currentAudio.paused" [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
       *ngIf="showFeedback===false">
       {{answer?.text}}
     </button>
