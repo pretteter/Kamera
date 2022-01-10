@@ -38,11 +38,22 @@
     }
   }
 
+  .feedback{
+    position: relative;
+    text-align: center;
+    border-radius: 40px;
+    padding-top: 130px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
   .feedbackChild {
     position: relative;
     background: #FFF6CC;
     text-align: center;
     border-radius: 40px;
+    margin-top: 350px;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;

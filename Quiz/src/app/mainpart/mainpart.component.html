@@ -5,17 +5,17 @@
   </div>
   <div class="answer"
     *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
-    <button id="answer{{i+1}}" [disabled]="!currentAudio.paused" [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
+    <button id="answer{{i+1}}"  [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
       *ngIf="showFeedback===false">
       {{answer?.text}}
     </button>
   </div>
-  <div [ngClass]="this.version==='child' ? 'feedbackChild': ''" *ngIf="showFeedback===true">
+  <div [ngClass]="this.version==='child' ? 'feedbackChild': 'feedback'" *ngIf="showFeedback===true">
     {{selectedAnswer?.feedback}}
-    <!-- <br>
+    <br>
     <button [disabled]="!currentAudio.paused"  (click)="stepAfterFeedback()">
       {{"weiter"}}
-    </button> -->
+    </button>
 
     <span></span>
   </div>

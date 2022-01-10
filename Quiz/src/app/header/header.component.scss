@@ -2,11 +2,12 @@
   position: absolute;
   background-color: white;
   border: none;
-transform: translateX(355px)translateY(-115px);
+  transform: translateX(355px)translateY(-115px);
 
 
   img {
-    padding-top: 50px;
+    //padding-top: 50px;
+    // transform: translateX(355px)translateY(-115px);
     max-width: 70px;
     max-height: 70px;
   }

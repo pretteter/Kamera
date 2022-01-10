@@ -1,6 +1,16 @@
 {
-  "_comment": "Konfiguration IMMER aus Sicht des Benutzers ausfüllen (zur Kamera schauend || Antwort1 ist der Kamera am nächsten)",
+  "_comment": "Konfiguration IMMER aus Sicht des Benutzers ausfüllen (zur Kamera schauend || Antwort1 ist der Kamera am nächsten || Antwort 0 sind die Fußstapfen)",
   "intro": {
+    "antwort0": {
+      "höhe": {
+        "nah": "2",
+        "fern": "4"
+      },
+      "breite": {
+        "links": "-1",
+        "rechts": "1"
+      }
+    },
     "antwort1": {
       "höhe": {
         "nah": "1",
@@ -19,16 +29,6 @@
       "breite": {
         "links": "-2",
         "rechts": "2"
-      }
-    },
-    "fussstapfen": {
-      "höhe": {
-        "nah": "2",
-        "fern": "4"
-      },
-      "breite": {
-        "links": "-1",
-        "rechts": "1"
       }
     }
   },

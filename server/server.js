@@ -24,14 +24,20 @@ app.get('/', (req, res) => {
 ioQuiz.on('connection', (socket) => {
     console.log('Quiz connected');
     ioQuiz.QuizSocket = socket;
+    socket.on("quizPlate", (data) => {
+        if (ioPlate?.PlateSocket) {
+            console.log("quiz finished " + data);
+            ioPlate.PlateSocket.emit("quiz", data);
+        }
+    })
 });
 
 ioCam.on('connection', (socket) => {
     console.log('Cam connected');
-    ioCam.camSocket = socket;
+    ioCam.CamSocket = socket;
     socket.on("camQuiz", (data) => {
         if (ioQuiz?.QuizSocket) {
-           // console.log("camQuiz ");
+            // console.log("camQuiz ");
             //console.log(data);
             ioQuiz.QuizSocket.emit("cam", data)
         }

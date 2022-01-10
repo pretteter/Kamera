@@ -11,6 +11,10 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
+socket.on("quiz", (data) => {
+  console.log("quiz is finished " + data);
+})
+
 var serverData = (function () {
   return {
     camData: function (x) {

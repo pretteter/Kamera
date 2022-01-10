@@ -27,6 +27,9 @@ export class IntroComponent implements OnInit {
   private httpClient: HttpClient;
   public step: number;
 
+  public leftFoot: any = "";
+  public rightFoot: any = "tschüss";
+
   completeJson: any = {};
   configJson: any = {}
   currentAudio = new Audio();
@@ -38,19 +41,27 @@ export class IntroComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("start")
-    // const pathToFile: string = '/assets/textfiles/begruesungstext.html'
-    // console.table(this.getFile(pathToFile));
     this.loadGreeting();
     serverData.camData(this.returnDataFromCam);
+    serverData.sendQuizFinished();
   }
 
   loadGreeting() {
     this.getFile('/assets/textfiles/intro.json');
-    this.getFile('/assets/textfiles/kinectKonfig.json');
+    this.getFile('/assets/textfiles/kinectKonfig.json', true);
   }
 
-  returnDataFromCam(data: any) {
-    console.log(data);
+ returnDataFromCam(data: any) {
+
+
+    return data
+    // if (data?.jointType == 19)
+    //   return data;
+
+    // if (data?.jointType == 15)
+    //   return data;
+
+    //this.detectFootSelectedQuestion();
   }
 
   getFile(pathToFile: string, config?: boolean) {
@@ -138,5 +149,40 @@ export class IntroComponent implements OnInit {
     } catch (e) { console.log("error while playing Audio") }
   }
 
+  checkIfBothFeetInQuestion(question: number): boolean {
+    const heightNear = this.configJson["intro"]["antwort" + question]["höhe"]["nah"];
+    const heightFar = this.configJson["intro"]["antwort" + question]["höhe"]["fern"];
+    const widthLeft = this.configJson["intro"]["antwort" + question]["breite"]["links"];
+    const widthRight = this.configJson["intro"]["antwort" + question]["breite"]["rechts"];
+
+
+
+    if (this.leftFoot?.cameraX >= widthLeft && this.leftFoot?.cameraX <= widthRight) {
+      if (this.leftFoot?.cameraZ >= heightNear && this.leftFoot?.cameraZ <= heightFar) {
+        console.log("stehst drinnen")
+        return true;
+      }
+    }
+
+    console.log("stehst draußen");
+    return false
+  }
+
+  detectFootSelectedQuestion(): number {
+
+    for (let i: number = 0; i <= 2; i++) {
+      if (this.step === 0 && i == 0 && this.checkIfBothFeetInQuestion(i)) {
+
+      }
+      else {
+        if (this.checkIfBothFeetInQuestion(i)) {
+
+        }
+      }
+    }
+
+
+    return 0
+  }
 }
 

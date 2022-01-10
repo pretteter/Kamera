@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
 
   configData;
 
+  isQuizFinished: boolean = true;
+
   pathToJson: string;
 
   currentRotation: number = 0;
@@ -90,7 +92,7 @@ export class AppComponent implements OnInit {
     }
     if (deg <= 0) {
       console.log("currentRotation " + this.currentRotation)
-      this.afterStopOfRotation();
+      this.isQuizFinished ? this.afterStopOfRotation() : "";
     }
   }
 
@@ -136,7 +138,7 @@ export class AppComponent implements OnInit {
     this.currentAudio.currentTime = 0;
   }
 
- async playAudio() {
+  async playAudio() {
     try {
       if (this.currentAudio.src.split("/assets")[1] !== this.configData['plateSection'][this.currentPartOfPlate][this.currentPartOfPlate + 1]["audioPath"].split("/assets")[1]) {
         this.stopAudio();

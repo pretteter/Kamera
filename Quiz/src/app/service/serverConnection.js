@@ -11,9 +11,9 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
-socket.on("cam", (data) => {
- // console.log(data)
-})
+// socket.on("cam", (data) => {
+//  // console.log(data)
+// })
 
 socket.on("plate", (data) => {
   console.log(data)
@@ -25,10 +25,13 @@ var serverData = (function () {
       socket.on("cam", (data) => {
         x(data);
       })
+    },
+    sendQuizFinished: function(){
+      console.log("quiz finished")
+      socket.emit('quizPlate', true);
     }
   }
 })(serverData || {})
-
 
 // var serverData = (function () {
 //   return {
