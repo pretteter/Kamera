@@ -42,8 +42,8 @@ export class IntroComponent implements OnInit {
   ngOnInit(): void {
     console.log("start")
     this.loadGreeting();
-    serverData.camData(this.returnDataFromCam);
-    serverData.sendQuizFinished();
+    serverData.camData(this.returnDataFromCam, this);
+    //  serverData.sendQuizFinished();
   }
 
   loadGreeting() {
@@ -51,17 +51,17 @@ export class IntroComponent implements OnInit {
     this.getFile('/assets/textfiles/kinectKonfig.json', true);
   }
 
- returnDataFromCam(data: any) {
+  returnDataFromCam(data: any, obj: any) {
 
+    obj.leftFoot = data;
 
-    return data
-    // if (data?.jointType == 19)
-    //   return data;
+    if (data?.jointType == 19)
+      obj.leftFoot = data;
 
-    // if (data?.jointType == 15)
-    //   return data;
+    if (data?.jointType == 15)
+      obj.rightFoot = data;
 
-    //this.detectFootSelectedQuestion();
+    obj.detectFootSelectedQuestion();
   }
 
   getFile(pathToFile: string, config?: boolean) {
@@ -165,7 +165,7 @@ export class IntroComponent implements OnInit {
     }
 
     console.log("stehst draußen");
-    return false
+    return false;
   }
 
   detectFootSelectedQuestion(): number {

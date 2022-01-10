@@ -17,6 +17,8 @@ var hueValue = light;
 var lerpAmt = 0.3;
 var state = 'ascending';
 
+var lastTimeStamp = new Date().getTime();
+
 function setup() {
   myCanvas = createCanvas(500, 500);
   background(0);
@@ -52,9 +54,16 @@ function drawJoint(joint) {
   // if (joint.jointType == 23 && joint.trackingState == 2) {
   //   console.table(joint)
   // }
+  if (!lastTimeStamp) {
+    lastTimeStamp = new Date().getTime();
+  }
+  var currentTimeStamp = new Date().getTime();
 
   if (joint.jointType == 19 || joint.jointType == 15) {
-    sendDataToQuiz(joint);
+    if (lastTimeStamp + 500 <= currentTimeStamp) {
+      sendDataToQuiz(joint);
+      lastTimeStamp = currentTimeStamp;
+    }
   }
   // console.table(joint)
 

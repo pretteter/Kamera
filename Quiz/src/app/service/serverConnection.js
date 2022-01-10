@@ -21,9 +21,9 @@ socket.on("plate", (data) => {
 
 var serverData = (function () {
   return {
-    camData: function (x) {
+    camData: function (x,obj) {
       socket.on("cam", (data) => {
-        x(data);
+        x(data,obj);
       })
     },
     sendQuizFinished: function(){
