@@ -5,7 +5,7 @@ import {
 import { Router } from '@angular/router';
 // import { Socket } from 'src/app/service/serverConnection.js'
 
-//declare var serverData: any;
+declare var serverData: any;
 
 export interface Question {
   textvalue: string;
@@ -27,7 +27,8 @@ export class IntroComponent implements OnInit {
   private httpClient: HttpClient;
   public step: number;
 
-  public completeJson: any = {};
+  completeJson: any = {};
+  configJson: any = {}
   currentAudio = new Audio();
 
   constructor(http: HttpClient, private router: Router) {
@@ -40,18 +41,28 @@ export class IntroComponent implements OnInit {
     // const pathToFile: string = '/assets/textfiles/begruesungstext.html'
     // console.table(this.getFile(pathToFile));
     this.loadGreeting();
+    serverData.camData(this.returnDataFromCam);
   }
+
   loadGreeting() {
     this.getFile('/assets/textfiles/intro.json');
+    this.getFile('/assets/textfiles/kinectKonfig.json');
   }
 
-  getFile(pathToFile: string) {
+  returnDataFromCam(data: any) {
+    console.log(data);
+  }
+
+  getFile(pathToFile: string, config?: boolean) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
 
-      this.completeJson = JSON.parse(JSON.stringify(data));
-      console.log(this.completeJson);
-      // this.showText.text = data.toString();
-      // this.showText.step = this.step;
+      if (config) {
+        this.configJson = JSON.parse(JSON.stringify(data));
+        console.log(this.configJson);
+      } else {
+        this.completeJson = JSON.parse(JSON.stringify(data));
+        console.log(this.completeJson);
+      }
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

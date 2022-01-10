@@ -1,3 +1,7 @@
+const {
+  jsonp
+} = require("express/lib/response");
+
 var myCanvas = null;
 
 // Declare kinectron 
@@ -45,10 +49,13 @@ function bodyTracked(body) {
 
 // Draw skeleton
 function drawJoint(joint) {
-if(joint.jointType==23 && joint.trackingState==2){
-  // console.table(joint)
-   console.log("rightHand")
-}
+  // if (joint.jointType == 23 && joint.trackingState == 2) {
+  //   console.table(joint)
+  // }
+
+  if (joint.jointType == 19 || joint.jointType == 15) {
+    sendDataToQuiz(joint);
+  }
   // console.table(joint)
 
   fill(100);

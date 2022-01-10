@@ -23,15 +23,16 @@ app.get('/', (req, res) => {
 
 ioQuiz.on('connection', (socket) => {
     console.log('Quiz connected');
-    ioQuiz.quizSocket = socket;
+    ioQuiz.QuizSocket = socket;
 });
 
 ioCam.on('connection', (socket) => {
     console.log('Cam connected');
     ioCam.camSocket = socket;
     socket.on("camQuiz", (data) => {
-        console.log("camQuiz ")
         if (ioQuiz?.QuizSocket) {
+           // console.log("camQuiz ");
+            //console.log(data);
             ioQuiz.QuizSocket.emit("cam", data)
         }
     })

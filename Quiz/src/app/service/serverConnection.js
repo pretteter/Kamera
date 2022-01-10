@@ -11,13 +11,23 @@ socket.on("connect", (data) => {
   console.log("connected")
 })
 
-socket.on("camQuiz", (data) => {
+socket.on("cam", (data) => {
+ // console.log(data)
+})
+
+socket.on("plate", (data) => {
   console.log(data)
 })
 
-socket.on("plateQuiz", (data) => {
-  console.log(data)
-})
+var serverData = (function () {
+  return {
+    camData: function (x) {
+      socket.on("cam", (data) => {
+        x(data);
+      })
+    }
+  }
+})(serverData || {})
 
 
 // var serverData = (function () {
