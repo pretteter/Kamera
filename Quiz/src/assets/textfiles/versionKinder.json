@@ -152,17 +152,17 @@
     "question2": {
       "textvalue": "Was trägt die Narrenmutter auf ihrem Kopf?",
       "answers": [{
-          "text": "eine Baseballkappe",
+          "text": "Eine Baseballkappe",
           "feedback": "Baseballkappen kennt heutzutage zwar jeder, jedoch wurde diese erst lange nach Erstellung des Tellers erfunden. Gleiches gilt für den Zylinderhut. Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
           "iscorrect": false
         },
         {
-          "text": "ein Zylinderhut",
+          "text": "Ein Zylinderhut",
           "feedback": "Der Zylinderhut wurde lange nach Erstellung des Tellers erfunden. Gleiches gilt für die Baseballkappe. Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
           "iscorrect": false
         },
         {
-          "text": "eine Krone mit Eselsohren",
+          "text": "Eine Krone mit Eselsohren",
           "feedback": "Richtig! Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
           "iscorrect": true
         }
@@ -238,7 +238,7 @@
           "iscorrect": true
         },
         {
-          "text": "schwarze Katzen",
+          "text": "Schwarze Katzen",
           "feedback": "Schwarze Katzen wurden früher oft mit Hexen in Verbindung gesetzt. Jedoch sind hier auf dem Teller keine Hexen gezeigt und auch keine Katzen. Hier werden Gänse und Greifvögel über die Brücke getragen.",
           "iscorrect": false
         }
@@ -252,12 +252,12 @@
           "iscorrect": false
         },
         {
-          "text": "einen Orden wie die Narrenmutter",
+          "text": "Einen Orden wie die Narrenmutter",
           "feedback": "Richtig! Der Mann trägt hier, wie auch die Narrenmutter, einen Narrenorden um den Hals.",
           "iscorrect": true
         },
         {
-          "text": "eine Halskrause",
+          "text": "Eine Halskrause",
           "feedback": "Eine Halskrause gehört zwar bei mancher Narrenkleidung dazu. Jedoch hat der Mann hier einen Narrenorden um den Hals, ähnlich wie der, den auch die Narrenmutter trägt.",
           "iscorrect": false
         }
