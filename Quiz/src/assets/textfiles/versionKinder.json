@@ -134,17 +134,17 @@
       "textvalue": "Wie viele Menschen kannst du innerhalb des Zauns sehen?",
       "answers": [{
           "text": "22",
-          "feedback": "Insgesamt kann man in der Tellermitte 22 Figuren erkennen. Innerhalb des eingezäunten Bereichs befinden sich eine Frau und sieben Narren, die um sie herumtanzen.",
+          "feedback": "Insgesamt sind in der Tellermitte 22 Figuren. Innerhalb des eingezäunten Bereichs sind aber nur eine Frau und sieben Narren.",
           "iscorrect": false
         },
         {
           "text": "8",
-          "feedback": "Richtig! Innerhalb des Zauns befindet sich eine Frau mit sieben weiteren Narren, die um sie herumtanzen.",
+          "feedback": "Richtig! Innerhalb des eingezäunten Bereichs sind nur eine Frau und sieben Narren.",
           "iscorrect": true
         },
         {
           "text": "1",
-          "feedback": "Innerhalb des Zauns ist eine Frau. Um sie herum tanzen ihre sieben Narren. Es befinden sich also insgesamt acht Personen innerhalb des Zauns.",
+          "feedback": "Innerhalb des eingezäunten Bereichs sind eine Frau und sieben Narren also insgesamt 8 Personen.",
           "iscorrect": false
         }
       ]
@@ -153,12 +153,12 @@
       "textvalue": "Was trägt die Narrenmutter auf ihrem Kopf?",
       "answers": [{
           "text": "Eine Baseballkappe",
-          "feedback": "Baseballkappen kennt heutzutage zwar jeder, jedoch wurde diese erst lange nach Erstellung des Tellers erfunden. Gleiches gilt für den Zylinderhut. Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
+          "feedback": "Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
           "iscorrect": false
         },
         {
           "text": "Ein Zylinderhut",
-          "feedback": "Der Zylinderhut wurde lange nach Erstellung des Tellers erfunden. Gleiches gilt für die Baseballkappe. Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
+          "feedback": "Auf ihrem Kopf trägt die Narrenmutter eine Krone mit Eselsohren.",
           "iscorrect": false
         },
         {
@@ -172,17 +172,17 @@
       "textvalue": "Was haben die Kopfbedeckungen der Söhne mit der Krone der Mutter gemeinsam?",
       "answers": [{
           "text": "Sie tragen auch Kronen",
-          "feedback": "Nur die Mutter im roten Kleid trägt eine Krone. Ihre Söhne tragen typische Narrenkappen. Jedoch kann man daran auch Eselsohren sehen – und zwar unterschiedlich viele.",
+          "feedback": "Nur die Mutter im roten Kleid trägt eine Krone. An ihrer Krone sind Eselohren. Genau wie bei den Narrenkappen der Söhne.",
           "iscorrect": false
         },
         {
           "text": "Sie haben auch Eselsohren an ihren Kappen",
-          "feedback": "Richtig! So wie die Mutter in ihrem roten Kleid Eselsohren an ihrer Krone trägt, haben die Söhne auch Eselsohren an ihren Kappen – und zwar unterschiedlich viele.",
+          "feedback": "Richtig! So wie die Mutter in ihrem roten Kleid Eselsohren an ihrer Krone trägt, haben die Söhne auch Eselsohren an ihren Kappen.",
           "iscorrect": true
         },
         {
           "text": "Sie haben alle die gleiche Farbe",
-          "feedback": "Die Söhne sind alle sehr bunt angezogen. Also haben auch alle ihre Kappen unterschiedliche Farben. An diesen Kopfbedeckungen kann man aber sehen, dass sie - wie ihre Mutter - Eselsohren an ihren Kappen befestigt haben – und zwar unterschiedlich viele.",
+          "feedback": "Die Kappen der Söhne haben unterschiedliche Farben. Die optische Gemeinsamkeit mit ihrer Mutter sind die Eselsohren.",
           "iscorrect": false
         }
       ]
@@ -191,17 +191,17 @@
       "textvalue": "Was für eine Zahl steht auf dem Dachgiebel der Mühle?",
       "answers": [{
           "text": "1969",
-          "feedback": "1969 betrat der erste Mensch den Mond. Der Teller wurde viel früher, und zwar 1528 hergestellt.",
+          "feedback": "Der Teller wurde viel früher und zwar 1528 hergestellt.",
           "iscorrect": false
         },
         {
           "text": "1528",
-          "feedback": "Richtig! Auf der Mühle ist die Zahl 1528 als Entstehungsjahr des Tellers zu erkennen.",
+          "feedback": "Richtig! Auf der Mühle steht die Zahl 1528.",
           "iscorrect": true
         },
         {
           "text": "1905",
-          "feedback": "1905 wurde das Eis am Stiel erfunden. Der Teller wurde viel früher, und zwar 1528 hergestellt.",
+          "feedback": "Der Teller wurde viel früher und zwar 1528 hergestellt.",
           "iscorrect": false
         }
       ]
@@ -215,12 +215,12 @@
         },
         {
           "text": "7",
-          "feedback": "Es sind im Bildvordergrund sieben Söhne, welche um die Narrenmutter herumtanzen. Fischer sind es aber nur zwei im Bildhintergrund. Einer steht in einem Boot und der andere läuft am Flussufer.",
+          "feedback": "Es sind nur zwei Fischer. Einer steht in einem Boot und der andere läuft am Flussufer.",
           "iscorrect": false
         },
         {
           "text": "3",
-          "feedback": "Es sind drei Menschen, welche links die Brücke überqueren. Fischer sind es rechts aber nur zwei: Einer steht in einem Boot und der andere läuft am Flussufer.",
+          "feedback": "Es sind nur zwei Fischer. Einer steht in einem Boot und der andere läuft am Flussufer.",
           "iscorrect": false
         }
       ]
@@ -229,7 +229,7 @@
       "textvalue": "Was für Tiere tragen die Leute über die Brücke?",
       "answers": [{
           "text": "Einhörner",
-          "feedback": "Leider sind auf dem Teller keine Einhörner abgebildet. Hier werden Gänse und Greifvögel über die Brücke getragen.",
+          "feedback": "Hier werden Gänse und Greifvögel über die Brücke getragen.",
           "iscorrect": false
         },
         {
@@ -239,7 +239,7 @@
         },
         {
           "text": "Schwarze Katzen",
-          "feedback": "Schwarze Katzen wurden früher oft mit Hexen in Verbindung gesetzt. Jedoch sind hier auf dem Teller keine Hexen gezeigt und auch keine Katzen. Hier werden Gänse und Greifvögel über die Brücke getragen.",
+          "feedback": "Hier werden Gänse und Greifvögel über die Brücke getragen.",
           "iscorrect": false
         }
       ]
@@ -248,17 +248,17 @@
       "textvalue": "Was trägt der Mann um seinen Hals?",
       "answers": [{
           "text": "Glocken",
-          "feedback": "Glocken werden in der Fastnacht zwar von vielen Narren getragen. Jedoch hat der Mann hier einen Narrenorden, wie ihn auch die Narrenmutter trägt, um den Hals.",
+          "feedback": "Der Mann hier hat einen Narrenorden, wie ihn auch die Narrenmutter trägt, um den Hals.",
           "iscorrect": false
         },
         {
           "text": "Einen Orden wie die Narrenmutter",
-          "feedback": "Richtig! Der Mann trägt hier, wie auch die Narrenmutter, einen Narrenorden um den Hals.",
+          "feedback": "Richtig! Der Mann hier hat einen Narrenorden, wie ihn auch die Narrenmutter trägt, um den Hals.",
           "iscorrect": true
         },
         {
           "text": "Eine Halskrause",
-          "feedback": "Eine Halskrause gehört zwar bei mancher Narrenkleidung dazu. Jedoch hat der Mann hier einen Narrenorden um den Hals, ähnlich wie der, den auch die Narrenmutter trägt.",
+          "feedback": "Der Mann hier hat einen Narrenorden, wie ihn auch die Narrenmutter trägt, um den Hals.",
           "iscorrect": false
         }
       ]
