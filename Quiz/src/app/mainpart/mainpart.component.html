@@ -13,9 +13,9 @@
   <div [ngClass]="this.version==='child' ? 'feedbackChild': 'feedback'" *ngIf="showFeedback===true">
     {{selectedAnswer?.feedback}}
     <br>
-    <button [disabled]="!currentAudio.paused"  (click)="stepAfterFeedback()">
+    <!-- <button [disabled]="!currentAudio.paused"  (click)="stepAfterFeedback()">
       {{"weiter"}}
-    </button>
+    </button> -->
 
     <span></span>
   </div>

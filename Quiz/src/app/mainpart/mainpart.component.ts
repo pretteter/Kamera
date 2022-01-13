@@ -93,20 +93,20 @@ export class MainpartComponent implements OnInit, OnDestroy {
       case "answer2text": {
         return "answer3text";
       }
-      // case "answer1feedback":
-      // case "answer2feedback":
-      // case "answer3feedback": {
-      //   if (this.checkIfAudiopartExiste("afterquestion")) {
-      //     return "afterquestion";
-      //   }
-      //   this.stepAfterFeedback();
-      //   if (this.checkIfAudiopartExiste("beforequestion")) {
-      //     return "beforequestion";
-      //   }
-      //   if (this.checkIfAudiopartExiste("question"))
-      //     return "question";
-      //   else return "";
-      // }
+      case "answer1feedback":
+      case "answer2feedback":
+      case "answer3feedback": {
+        if (this.checkIfAudiopartExiste("afterquestion")) {
+          return "afterquestion";
+        }
+        this.stepAfterFeedback();
+        if (this.checkIfAudiopartExiste("beforequestion")) {
+          return "beforequestion";
+        }
+        if (this.checkIfAudiopartExiste("question"))
+          return "question";
+        else return "";
+      }
       default: {
         return "";
       }
