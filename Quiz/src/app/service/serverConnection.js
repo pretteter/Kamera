@@ -21,12 +21,15 @@ socket.on("plate", (data) => {
 
 var serverData = (function () {
   return {
-    camData: function (x,obj) {
+    camData: function (x, obj) {
       socket.on("cam", (data) => {
-        x(data,obj);
+        x(data, obj);
       })
     },
-    sendQuizFinished: function(){
+    removeListener: function () {
+      socket.removeListener("cam");
+    },
+    sendQuizFinished: function () {
       console.log("quiz finished")
       socket.emit('quizPlate', true);
     }

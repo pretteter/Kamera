@@ -1,5 +1,6 @@
 {
   "_comment": "Konfiguration IMMER aus Sicht des Benutzers ausfüllen (zur Kamera schauend || Antwort1 ist der Kamera am nächsten || Antwort 0 sind die Fußstapfen)",
+  "zeit_bis_antwort_ausgewählt_wird":"3000",
   "intro": {
     "antwort0": {
       "höhe": {
@@ -23,8 +24,8 @@
     },
     "antwort2": {
       "höhe": {
-        "nah": "3",
-        "fern": "4"
+        "nah": "2.2",
+        "fern": "3"
       },
       "breite": {
         "links": "-2",
@@ -33,6 +34,5 @@
     }
   },
   "mainpart": {
-
   }
 }
