@@ -12,7 +12,7 @@
 <div class="question" *ngIf="step>=2">
   <div class="questionText">{{returnCurrentQuestion().textvalue}}</div>
   <div class="answer" *ngFor="let answer of returnCurrentQuestion().answers">
-    <button (click)='chooseVersion(answer)'>
+    <button [disabled]="!currentAudio.paused" (click)='chooseVersion(answer)'>
       {{answer}}
     </button>
   </div>

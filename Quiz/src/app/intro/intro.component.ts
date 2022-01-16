@@ -28,14 +28,14 @@ export class IntroComponent implements OnInit, OnDestroy {
   public step: number;
 
   public leftFoot: any = "";
-  public rightFoot: any = "tschüss";
+  public rightFoot: any = "";
 
   completeJson: any = {};
   configJson: any = {}
   currentAudio = new Audio();
 
   lastTimeStamp = new Date().getTime();
-  lastSelectedQuestion: number;
+  lastSelectedQuestion: number = 0;
 
   constructor(http: HttpClient, private router: Router, private cdr: ChangeDetectorRef, private ngZone: NgZone) {
     this.httpClient = http;
@@ -55,17 +55,22 @@ export class IntroComponent implements OnInit, OnDestroy {
   }
 
   returnDataFromCam(data: any, obj: any) {
-
     if (!obj.checkIfUserInteraction()) {
       return;
     }
-    obj.leftFoot = data;
-    if (data?.jointType == 19)
-      obj.leftFoot = data;
-    if (data?.jointType == 15)
+    // data?.jointType == 15 ? console.log("links "+data?.cameraX) : "";
+    if (data?.jointType == 19) {
       obj.rightFoot = data;
+      // console.log("rechts "+obj.rightFoot.cameraX);
+    }
+    if (data?.jointType == 15) {
+      // console.log("links "+data?.cameraX)
+      obj.leftFoot = data;
+    }
+
+
     const answer: number = obj.detectFootSelectedQuestion();
-    //const checkQuestion: number = Object.assign({}, question)
+
     if (answer !== -1 && answer === obj.lastSelectedQuestion && obj.checkIfFieldSelected()) {
       if (obj.step === 0) {
         obj.changeStep(1);
@@ -166,35 +171,56 @@ export class IntroComponent implements OnInit, OnDestroy {
   }
 
   checkIfBothFeetInQuestion(question: number): boolean {
+
+    if (this.checkIfFootInQuestion(question, "left") && this.checkIfFootInQuestion(question, "right"))
+      return true;
+    return false;
+  }
+
+  checkIfFootInQuestion(question: number, whichFoot: string): boolean {
     const heightNear = this.configJson["intro"]["antwort" + question]["höhe"]["nah"];
     const heightFar = this.configJson["intro"]["antwort" + question]["höhe"]["fern"];
     const widthLeft = this.configJson["intro"]["antwort" + question]["breite"]["links"];
     const widthRight = this.configJson["intro"]["antwort" + question]["breite"]["rechts"];
 
+    let foot;
+    if (whichFoot === "left") {
+      foot = this.leftFoot
+    } else if (whichFoot === "right") {
+      foot = this.rightFoot;
+    }
 
+    // console.log(whichFoot + "hat x Koordinate " + foot?.cameraX)
 
-    if (this.leftFoot?.cameraX >= widthLeft && this.leftFoot?.cameraX <= widthRight) {
-      if (this.leftFoot?.cameraZ >= heightNear && this.leftFoot?.cameraZ <= heightFar) {
+    if (foot?.cameraX >= widthLeft && foot?.cameraX <= widthRight) {
+      if (foot?.cameraZ >= heightNear && foot.cameraZ <= heightFar) {
         if (question === 0 && this.checkIfFootStep()) {
+          console.log("stehst in Antwort " + question + " mit dem " + whichFoot + " Fuß");
           return true;
         } else if (question !== 0 && !this.checkIfFootStep()) {
+          console.log("stehst in Antwort " + question + " mit dem " + whichFoot + " Fuß");
           return true;
         }
       }
     }
+    console.log("Fuß " + whichFoot + " steht in keiner Antwort");
+    // this.lastTimeStamp = new Date().getTime();
     return false;
   }
 
   detectFootSelectedQuestion(): number {
     let value: number = -1;
     for (let i: number = 0; i <= 2; i++) {
+      // if (i <= 1 && this.checkIfFootStep()) {
+      //   value = -1;
+      // }
       if (this.checkIfBothFeetInQuestion(i)) {
-        console.log("stehst in Antwort " + i);
+        // console.log("stehst in Antwort " + i);
         value = i;
       }
     }
     if (value === -1) {
-      console.log("du stehst in keiner Antwort")
+      // console.log("du stehst in keiner Antwort")
     }
 
     return value;
@@ -208,10 +234,14 @@ export class IntroComponent implements OnInit, OnDestroy {
   }
 
   checkIfFieldSelected(): boolean {
-    const timeDifference: number = this.configJson ? Number(this.configJson["zeit_bis_antwort_ausgewählt_wird"]) : 3000;
+    let timeDifference: number = this.configJson ? Number(this.configJson["zeit_bis_antwort_ausgewählt_wird"]) : 3000;
     const currentTimeStamp = new Date().getTime();
     if (!this.lastTimeStamp) {
       this.lastTimeStamp = new Date().getTime();
+    }
+
+    if (this.step === 3) {
+      timeDifference = timeDifference + 4000;
     }
 
     if (currentTimeStamp - this.lastTimeStamp > timeDifference * 2 + 2000) {

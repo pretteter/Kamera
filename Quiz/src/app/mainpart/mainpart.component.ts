@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import {
   HttpClient, HttpErrorResponse
 } from '@angular/common/http';
@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Question } from '../intro/intro.component';
 import { Answer } from '../intro/intro.component';
+
+declare var serverData: any;
 
 @Component({
   selector: 'app-mainpart',
@@ -23,7 +25,17 @@ export class MainpartComponent implements OnInit, OnDestroy {
   selectedAnswer: Answer;
   currentAudio = new Audio();
 
-  constructor(http: HttpClient, private router: Router, private route: ActivatedRoute) {
+  isQuizFinished: boolean;
+
+  public leftFoot: any = "";
+  public rightFoot: any = "";
+
+  configJson: any = {}
+
+  lastTimeStamp = new Date().getTime();
+  lastSelectedQuestion: number = -1;
+
+  constructor(http: HttpClient, private router: Router, private route: ActivatedRoute, private cdr: ChangeDetectorRef) {
     this.httpClient = http;
     this.currentQuestion = 1;
   }
@@ -33,6 +45,7 @@ export class MainpartComponent implements OnInit, OnDestroy {
       this.version = params.version;
     }
     );
+    this.getFile('/assets/textfiles/kinectKonfig.json', true);
     switch (this.version) {
       case "compact": {
         this.getFile('/assets/textfiles/versionKompakt.json');
@@ -47,6 +60,7 @@ export class MainpartComponent implements OnInit, OnDestroy {
         break;
       }
     }
+    serverData.camData(this.returnDataFromCam, this);
   }
 
   playAudio(partOfQuestion: string) {
@@ -192,6 +206,7 @@ export class MainpartComponent implements OnInit, OnDestroy {
     this.currentQuestion++;
     this.showFeedback = false;
     // this.playAudio(this.currentAudioStep + 1)
+    this.cdr.detectChanges();
   }
 
   answerSelect(answer: Answer, position: number) {
@@ -200,12 +215,22 @@ export class MainpartComponent implements OnInit, OnDestroy {
     // const number: number = Number(this.currentQuestion.toString() + position);
     // console.log(number);
     this.playAudio("answer" + (position + 1) + "feedback");
+    this.cdr.detectChanges();
   }
 
 
-  getFile(pathToFile: string) {
+  getFile(pathToFile: string, config?: boolean) {
     this.httpClient.get(pathToFile, { responseType: 'json' }).subscribe(data => {
-      this.completeJson = JSON.parse(JSON.stringify(data));
+
+      if (config) {
+        this.configJson = JSON.parse(JSON.stringify(data));
+        console.log(this.configJson);
+      } else {
+        this.completeJson = JSON.parse(JSON.stringify(data));
+        console.log(this.completeJson);
+      }
+
+
       if (this.checkIfAudiopartExiste("beforequestion")) {
         this.playAudio("beforequestion");
       }
@@ -230,13 +255,25 @@ export class MainpartComponent implements OnInit, OnDestroy {
   returnCurrentProgress(): number {
     if (this.completeJson && this.completeJson['questions']) {
       const maxLength: number = Object.keys(this.completeJson['questions']).length + 1
+      if (this.currentQuestion === maxLength - 1) {
+        if (this.currentAudio.src.split("/assets")[1] === this.selectAudioPath("afterquestion").split("/assets")[1])
+          this.currentAudio.onended = () => {
+            this.whenQuizFinished();
+          }
+      }
       return (this.currentQuestion / maxLength) * 100;
     }
     return 0;
   }
 
+  whenQuizFinished() {
+    serverData.sendQuizFinished();
+    this.isQuizFinished = true;
+  }
+
   ngOnDestroy(): void {
     this.stopAudio();
+    serverData.removeListener();
   }
 
   selectPicturePath(): string {
@@ -268,4 +305,110 @@ export class MainpartComponent implements OnInit, OnDestroy {
     else return "";
   }
 
+  ///////////////////////////////////////////
+  ///////////////////////////////////////////
+  //////////////Gesten///////////////////////
+  ///////////////////////////////////////////
+  ///////////////////////////////////////////
+
+  returnDataFromCam(data: any, obj: any) {
+    if (!obj.checkIfUserInteraction()) {
+      return;
+    }
+    // data?.jointType == 15 ? console.log("links "+data?.cameraX) : "";
+    if (data?.jointType == 19) {
+      obj.rightFoot = data;
+      // console.log("rechts "+obj.rightFoot.cameraX);
+    }
+    if (data?.jointType == 15) {
+      // console.log("links "+data?.cameraX)
+      obj.leftFoot = data;
+    }
+
+
+    const answer: number = obj.detectFootSelectedQuestion();
+
+    if (answer !== -1 && answer === obj.lastSelectedQuestion && obj.checkIfFieldSelected()) {
+      if (obj.completeJson) {
+        obj.answerSelect(obj.completeJson['questions']['question' + obj.currentQuestion]?.answers[answer - 1], answer - 1);
+        console.log("Step geht weiter");
+      }
+    }
+    obj.lastSelectedQuestion = answer;
+  }
+
+  checkIfBothFeetInQuestion(question: number): boolean {
+
+    if (this.checkIfFootInQuestion(question, "left") && this.checkIfFootInQuestion(question, "right"))
+      return true;
+    return false;
+  }
+
+  checkIfFootInQuestion(answer: number, whichFoot: string): boolean {
+    if (!this.configJson) {
+      return false;
+    }
+    const heightNear = this.configJson["mainpart"]["antwort" + answer]["höhe"]["nah"];
+    const heightFar = this.configJson["mainpart"]["antwort" + answer]["höhe"]["fern"];
+    const widthLeft = this.configJson["mainpart"]["antwort" + answer]["breite"]["links"];
+    const widthRight = this.configJson["mainpart"]["antwort" + answer]["breite"]["rechts"];
+
+    let foot;
+    if (whichFoot === "left") {
+      foot = this.leftFoot
+    } else if (whichFoot === "right") {
+      foot = this.rightFoot;
+    }
+
+    // console.log(whichFoot + "hat x Koordinate " + foot?.cameraX)
+
+    if (foot?.cameraX >= widthLeft && foot?.cameraX <= widthRight) {
+      if (foot?.cameraZ >= heightNear && foot.cameraZ <= heightFar) {
+        if (answer !== -1 && answer <= 3) {
+          console.log("stehst in Antwort " + answer + " mit dem " + whichFoot + " Fuß");
+          return true;
+        }
+      }
+    }
+    console.log("Fuß " + whichFoot + " steht in keiner Antwort");
+    // this.lastTimeStamp = new Date().getTime();
+    return false;
+  }
+
+  detectFootSelectedQuestion(): number {
+    let value: number = -1;
+    for (let i: number = 1; i <= 3; i++) {
+      if (this.checkIfBothFeetInQuestion(i)) {
+        // console.log("stehst in Antwort " + i);
+        value = i;
+      }
+    }
+    return value;
+  }
+
+  checkIfFieldSelected(): boolean {
+    let timeDifference: number = this.configJson ? Number(this.configJson["zeit_bis_antwort_ausgewählt_wird"]) : 3000;
+    const currentTimeStamp = new Date().getTime();
+    if (!this.lastTimeStamp) {
+      this.lastTimeStamp = new Date().getTime();
+    }
+
+    if (currentTimeStamp - this.lastTimeStamp > timeDifference * 2 + 2000) {
+      console.log("lastTime zu lang her")
+      this.lastTimeStamp = currentTimeStamp
+    }
+
+    if (this.lastTimeStamp + timeDifference <= currentTimeStamp) {
+      this.lastTimeStamp = currentTimeStamp;
+      return true;
+    }
+    return false;
+  }
+
+  checkIfUserInteraction(): boolean {
+    if (this.showFeedback === false && this.currentAudio.paused) {
+      return true;
+    }
+    return false;
+  }
 }

@@ -1,26 +1,30 @@
+<span *ngIf="!isQuizFinished">
+  <div class="question" *ngIf="completeJson">
+    <div *ngIf="showFeedback===false" class="questionText">
+      {{completeJson["questions"]["question" + currentQuestion]?completeJson["questions"]["question" + currentQuestion]["textvalue"]:"Keine Frage verfügbar"}}
+    </div>
+    <div class="answer"
+      *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
+      <button id="answer{{i+1}}" [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
+        *ngIf="showFeedback===false">
+        {{answer?.text}}
+      </button>
+    </div>
+    <div [ngClass]="this.version==='child' ? 'feedbackChild': 'feedback'" *ngIf="showFeedback===true">
+      {{selectedAnswer?.feedback}}
+      <br>
+      <!-- <button [disabled]="!currentAudio.paused"  (click)="stepAfterFeedback()">
+        {{"weiter"}}
+      </button> -->
 
-<div class="question" *ngIf="completeJson">
-  <div *ngIf="showFeedback===false" class="questionText">
-    {{completeJson["questions"]["question" + currentQuestion]?completeJson["questions"]["question" + currentQuestion]["textvalue"]:"Keine Frage verfügbar"}}
+      <span></span>
+    </div>
+    <div [ngClass]="this.version==='child' ? 'goosePicture': 'icon'" *ngIf="selectPicturePath()!==''">
+      <img src={{selectPicturePath()}}>
+    </div>
   </div>
-  <div class="answer"
-    *ngFor="let answer of this.completeJson['questions']['question' + currentQuestion]?.answers; let i = index">
-    <button id="answer{{i+1}}"  [ngClass]="this.version==='child' ? 'buttonChild': ''" (click)="answerSelect(answer,i)"
-      *ngIf="showFeedback===false">
-      {{answer?.text}}
-    </button>
-  </div>
-  <div [ngClass]="this.version==='child' ? 'feedbackChild': 'feedback'" *ngIf="showFeedback===true">
-    {{selectedAnswer?.feedback}}
-    <br>
-    <!-- <button [disabled]="!currentAudio.paused"  (click)="stepAfterFeedback()">
-      {{"weiter"}}
-    </button> -->
-
-    <span></span>
-  </div>
-  <div [ngClass]="this.version==='child' ? 'goosePicture': 'icon'" *ngIf="selectPicturePath()!==''">
-    <img src={{selectPicturePath()}}>
-  </div>
-</div>
-<mat-progress-bar class="progressBar" mode="determinate" value={{returnCurrentProgress()}}></mat-progress-bar>
+  <mat-progress-bar class="progressBar" mode="determinate" value={{returnCurrentProgress()}}></mat-progress-bar>
+</span>
+<span *ngIf="isQuizFinished">
+  <div>Teller Interagieren</div>
+</span>

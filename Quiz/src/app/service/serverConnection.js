@@ -23,6 +23,7 @@ var serverData = (function () {
   return {
     camData: function (x, obj) {
       socket.on("cam", (data) => {
+        // data?.jointType == 15 ? console.log(data?.cameraX) : "";
         x(data, obj);
       })
     },
