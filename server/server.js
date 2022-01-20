@@ -38,7 +38,7 @@ ioCam.on('connection', (socket) => {
     socket.on("camQuiz", (data) => {
         if (ioQuiz?.QuizSocket) {
             // console.log("camQuiz ");
-            data?.jointType == 15 ? console.log(data?.cameraX) : "";
+            // data?.jointType == 15 ? console.log(data?.cameraX) : "";
             ioQuiz.QuizSocket.emit("cam", data)
         }
     })
